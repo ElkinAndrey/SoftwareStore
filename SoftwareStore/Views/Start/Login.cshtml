@@ -1,0 +1,45 @@
+﻿@model Account;
+
+<link rel="stylesheet" href="~/css/Start/Login.css" />
+<script src="~/js/Start/Login.js"></script>
+
+<form asp-controller="Start" method="post">
+    <div id="Title">Sign in</div>
+    <div id="Center">
+        <div id="Block">
+            @if (ViewBag.NameEmailError) 
+            {
+				<div id="Subtitle" class="ErrorText">Name</div>
+				<input asp-for=Name class="Input1 ErrorInput" style="margin-bottom: 5px;">
+				<div id="Subtitle" class="ErrorText">Wrong Name</div>
+            }
+            else
+            {
+				<div id="Subtitle">Name</div>
+				<input asp-for=Name class="Input1">
+            }
+        </div>
+                            
+		<div id="Block">
+            @if (ViewBag.PasswordError) 
+            {
+				<div id="Subtitle" class="ErrorText">Password</div>
+				<input asp-for=Password type="password" class="Input1 ErrorInput" id="Password">
+				<div id="Subtitle" class="ErrorText">Wrong Password</div>
+            }
+            else
+            {
+				<div id="Subtitle">Password</div>
+				<input asp-for=Password type="password" class="Input1" id="Password">
+            }
+			<div id="ShowPassword">
+				<button formmethod="dialog" class="Button3" id="ShowPasswordButton" onclick="leftright1()" style="background-color: #eaeaea;"></button>
+				<div id="ShowPasswordText">Show password</div>
+			</div>
+		</div>
+	</div>
+    <div id="Buttons">
+		<div>@Html.ActionLink("Create account", "Registration", "Start", routeValues: null, htmlAttributes: new { @class = "Button2", id="CreateAccount", draggable="false"})</div>
+		<button type="submit" asp-action="Login" class="Button1" id="Next">Next</button>
+	</div>
+</form>

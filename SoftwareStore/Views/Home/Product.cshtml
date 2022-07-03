@@ -1,0 +1,169 @@
+﻿@model Software;
+
+@{
+	Layout = null;
+}
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Software Store</title>
+		<link rel="stylesheet" href="~/css/AllStyles.css"/>
+		<link rel="stylesheet" href="~/css/Home/Product.css"/>
+		<style>
+			table {
+				border-collapse:collapse;
+			}
+			td {
+				padding: 10px;
+				padding-right: 30px;
+				background: #eeeeee;
+				border: 1px solid #d9d9d9; /* Параметры рамки */
+			}
+		</style>
+	</head>
+	<body spellcheck="false">
+		<div id="Head">
+			<div class="HeadPanelSortby">Software Store</div>
+			<div class="HeadPanelSortby">@ViewBag.Name</div>
+				
+			@if(@ViewBag.Name == "")
+			{
+				<div>@Html.ActionLink("Sign in", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Head2Start", draggable="false"})</div>
+			}
+			else
+			{
+				<div>@Html.ActionLink("Sign out", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Head2Start", draggable="false"})</div>
+			}
+		</div>
+		<div id="Center">
+		<div id="Body" style="user-select: text;">
+			<div class="header">
+				@Model.Name
+			</div>
+
+			<img src="~/images/@Model.Image" alt="" style="height: 200px; margin: 20px;">
+								
+			<div style="user-select: text; line-height: 1.7; margin-bottom: 20px;">
+				@Model.Information
+			</div>
+
+			<div id="Buttons" style="display: flex; width: 100%;position: relative; margin-bottom: 30px;">
+				<form asp-action="Index" asp-controller="Home"><button class="Button1">Back</button></form>
+				@if (ViewBag.Buy)
+				{
+					<form asp-action="DownloadFile" asp-controller="Home" style="position: absolute; right: 0px;">
+						<input type="hidden" name="id" value="@Model.Id"/>
+						<input type="hidden" name="filename" value="@Model.File"/>
+						<button class="Button1">Download</button>
+					</form>
+				}
+				else
+				{
+					@if (ViewBag.Name == "")
+					{
+						<div>@Html.ActionLink("Buy", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Button1", draggable="false", style="position: absolute; right: 0px;"})</div>
+					}
+					else
+					{
+						<form asp-action="Buy" asp-controller="Home" style="position: absolute; right: 0px;">
+							<input type="hidden" name="id" value="@Model.Id"/>
+							<button class="Button1">Buy</button>
+						</form>
+					}						
+				}
+			</div>
+
+			<div id="Specification">
+				<div class="header">Specification</div>
+				<table>
+					<tr>
+						<td>Size (MB):</td>
+						<td>@Model.Size</td>
+					</tr>
+					<tr>
+						<td>Operating system:</td>
+						<td>@Model.OS</td>
+					</tr>
+					<tr>
+						<td>Languages:</td>
+						<td>@Model.Language</td>
+					</tr>
+					<tr>
+						<td>Date added:</td>
+						<td>@Model.Date</td>
+					</tr>
+					<tr>
+						<td>Downloads:</td>
+						<td>@Model.Downloads</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="Reviews">
+				<div style="display: flex;">
+					
+					<div class="header">Reviews</div>
+					@if (ViewBag.Buy)
+					{
+						<button class="Button1" id="CreateReview" style="margin: auto 10px;">Add reviews</button>
+					}
+					else
+					{
+						<button class="Button1" id="CreateReview" style="display: none;">Add reviews</button>
+					}
+				</div>
+				@foreach(var i in @Model.Reviews)
+				{
+					<div id="Review">
+						<div style="margin-bottom: 10px; font-size: 24px;">@i.Name</div>
+						<div>@i.Information</div>
+					</div>
+				}
+			</div>
+		</div>
+
+		<div id="box" class="box hidden visuallyhidden">
+			<div class="second">
+				<div class="third">
+					<div style="margin: 30px;">
+						<form asp-controller="Home">
+							<h2>Review</h2>
+							<textarea class="Input1" style="width: calc(100% - 2px); height: 200px;resize: none; margin-bottom: 20px;" name="information"></textarea>
+							<input type="hidden" name="id" value="@Model.Id" />
+							<div style="height: 36px;">
+								<button id="BackReview" style="float: left;">Back</button>
+								<button class="Button1" style="float: right;" asp-action="AddReview">Add</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script>
+			let box = document.getElementById('box'),
+				btn = document.querySelector('#CreateReview'),
+				btn2 = document.querySelector('#BackReview');
+
+			btn.addEventListener('click', function () {
+				box.classList.remove('hidden');
+				setTimeout(function () {
+				  box.classList.remove('visuallyhidden');
+				}, 20); 
+			}, false);
+		
+			btn2.addEventListener('click', function () {
+				box.classList.add('visuallyhidden');    
+				box.addEventListener('transitionend', function(e) {
+				  box.classList.add('hidden');
+				}, {
+				  capture: false,
+				  once: true,
+				  passive: false
+				});		  
+			}, false);
+		</script>
+	</body>
+</html>

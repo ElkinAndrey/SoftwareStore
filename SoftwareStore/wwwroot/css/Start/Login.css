@@ -1,0 +1,22 @@
+﻿#ShowPassword {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+#ShowPasswordButton {
+    margin: auto 14px auto 5px;
+}
+
+#ShowPasswordText {
+    font-size: 20px;
+}
+
+
+#CreateAccount {
+    float: left;
+}
+
+#Next {
+    float: right;
+}

@@ -1,0 +1,122 @@
+﻿@model SoftwareViewModel;
+
+@{
+	Layout = null;
+}
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Software Store</title>
+		<link rel="stylesheet" href="~/css/AllStyles.css"/>
+		<link rel="stylesheet" href="~/css/Home/Index.css"/>
+	</head>
+	<body spellcheck="false">
+		<div id="Center">
+			
+			<div id="Head">
+				<div class="HeadPanelSortby">Software Store</div>
+				<div class="form_radio_btn">
+					<input id="radio-1" type="radio" name="radio" value="1" onclick="All()" checked>
+					<label for="radio-1">All</label>
+				</div>
+				<div class="form_radio_btn" >
+					<input id="radio-2" type="radio" name="radio" value="2" onclick="Buy()">
+					<label for="radio-2">Buy</label>
+				</div>
+				<form asp-action="Index" asp-controller="Home" method="post" style="margin:auto 0px;">
+					<input class="HeadPanelInput" placeholder="Enter name" asp-for="SearchString">
+					<button class = "Head2Start">Search</button>
+				</form>
+				<div class="HeadPanelSortby">@ViewBag.Name</div>
+				
+				@if(@ViewBag.Name == "")
+				{
+					<div>@Html.ActionLink("Sign in", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Head2Start", draggable="false"})</div>
+				}
+				else
+				{
+					<div>@Html.ActionLink("Sign out", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Head2Start", draggable="false"})</div>
+				}
+			</div>
+				
+			<div id="Body">
+				<form asp-controller="Home" method="post">
+					<div id="masonry-container">
+					@foreach(AllMySoftware i in @Model.Softwares)
+					{
+						if (i.My)
+						{
+							<div id="masonry-item">
+								<button id="pseudo-img" type="submit" asp-action="Product" asp-route-id=@i.Software.Id>
+									<div id="WordContent">
+										<div id="WordContentHead">
+											@i.Software.Name
+										</div>
+
+										<img src="~/images/@i.Software.Image" alt="" id="WordContentImage">
+
+										<div id="WordContentShortDescription">
+											@i.Software.ShortInformation
+										</div>
+
+										<div id="WordContentPrice">
+											@($"Price: {i.Software.Price}")
+										</div>
+									</div>
+								</button>
+							</div>
+						}
+						else
+						{
+							<div id="masonry-item" class="showAllBuy">
+								<button id="pseudo-img" type="submit" asp-action="Product" asp-route-id=@i.Software.Id style="border-color: #d9d9d9;">
+									<div id="WordContent">
+										<div id="WordContentHead">
+											@i.Software.Name
+										</div>
+
+										<img src="~/images/@i.Software.Image" alt="" id="WordContentImage">
+
+										<div id="WordContentShortDescription">
+											@i.Software.ShortInformation
+										</div>
+
+										<div id="WordContentPrice">
+											@($"Price: {i.Software.Price}")
+										</div>
+									</div>
+								</button>
+							</div>
+						}
+					}
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="~/js/Home/Index.js"></script>
+		<script>
+			// Размещение блоков grid
+			function masonryLayout() {
+				const masonryContainerStyle = getComputedStyle(
+					document.querySelector("#masonry-container")
+				);
+				const columnGap = parseInt(
+					masonryContainerStyle.getPropertyValue("column-gap")
+				);
+				const autoRows = parseInt(
+					masonryContainerStyle.getPropertyValue("grid-auto-rows")
+				);
+
+				document.querySelectorAll("#masonry-item").forEach((elt) => {
+					elt.style.gridRowEnd = `span ${Math.ceil(
+						elt.querySelector("#pseudo-img").scrollHeight / autoRows +
+						columnGap / autoRows
+					)}`;
+				});
+			}
+			masonryLayout();
+			window.addEventListener("resize", masonryLayout);
+		</script>
+	</body>
+</html>

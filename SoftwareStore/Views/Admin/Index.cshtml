@@ -1,0 +1,120 @@
+﻿@model ProductViewModel
+
+@{
+	Layout = null;
+}
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Software Store</title>
+		<link rel="stylesheet" href="~/css/AllStyles.css"/>
+		<link rel="stylesheet" href="~/css/Admin/Index.css"/>
+		<style>
+			h1{
+				margin-top: 10px;
+			}
+			h4 {
+				margin-bottom: 0px;
+			}
+			span {
+				margin-bottom: 30px;
+
+			}
+			input{
+				margin-right: 30px;
+			}
+			textarea{
+				width: 550px;
+				height: 300px;
+				resize: none;
+			}
+			
+			.input-validation-error { border: 2px solid #f00; background-color: #fee;}
+			.field-validation-error { border-color: #f00; color: red;}
+		</style>
+	</head>
+	<body spellcheck="false">
+		@if(ViewBag.AdminPanel)
+		{
+		<div>
+			<h1>Admin panel</h1>
+			
+			@*Дать админку другому человеку*@
+			<form asp-action="GiveAdmin" asp-controller="Admin" method="post" enctype="multipart/form-data">
+				<h2>Give admin</h2>
+				<h4><span asp-validation-for="NameAdmin">Enter name</span></h4>
+				<div style="display: flex">
+					<input asp-for="NameAdmin" class="Input1">
+					<button class="Button1">Give admin</button>
+				</div>
+			</form>
+
+			@*Дать доступ к программе человеку*@
+			<form asp-action="GiveProduct" asp-controller="Admin" method="post" enctype="multipart/form-data">
+				<h2>Give software</h2>
+				<h4><span asp-validation-for="NameBuyer">Enter name</span></h4>
+				<div style="display: flex">
+					<input asp-for="NameBuyer" class="Input1">
+				</div>
+				<h4><span asp-validation-for="Product">Enter product name</span></h4>
+				<div style="display: flex">
+					<input asp-for="Product" class="Input1">
+					<button class="Button1">Give software</button>
+				</div>
+				<h2>Add new product</h2>
+			</form>
+
+			@*Добавить новую программу*@
+			<form asp-action="AddProduct" asp-controller="Admin" method="post" enctype="multipart/form-data">
+				<h4><span asp-validation-for="Software.Name">Name</span></h4>
+				<input asp-for="Software.Name" class="Input1"><br>
+
+				<h4><span asp-validation-for="Software.ShortInformation">Short information</span></h4>
+				<textarea asp-for="Software.ShortInformation" class="Input1"></textarea><br>
+
+				<h4><span asp-validation-for="Software.Information">Information</span></h4>
+				<textarea asp-for="Software.Information" class="Input1"></textarea><br>
+				
+				<h4><span asp-validation-for="Software.Price">Price</span></h4>
+				<input asp-for="Software.Price" class="Input1" ><br>
+				
+				<h4><span asp-validation-for="Software.Size">Size</span></h4>
+				<input asp-for="Software.Size" class="Input1" ><br>
+				
+				<h4><span asp-validation-for="Software.OS">Operating system</span></h4>
+				<input asp-for="Software.OS" class="Input1" ><br>
+
+				<h4><span asp-validation-for="Software.Language">Language</span></h4>
+				<input asp-for="Software.Language" class="Input1" ><br>
+				
+				<h4><span asp-validation-for="GetFile">File</span></h4>
+				<div id="Button">
+					<label for="file" id="Button">
+						<span asp-validation-for="GetFile" class="Button4">Add File</span>
+						<input asp-for="GetFile" style="margin: 20px 0px;" type="file" id="file">
+					</label>
+				</div>
+				
+				<h4><span asp-validation-for="GetImage">Image</span></h4>
+				<div id="Button">
+					<label for="image" id="Button">
+						<span asp-validation-for="GetImage" class="Button4">Add Image</span>
+						<input asp-for="GetImage" style="margin: 20px 0px;" type="file" id="image">
+					</label>
+				</div>
+
+				<div><button class="Button1">Add</button></div>
+			</form>
+		</div>
+		}
+		else
+		{
+		<div class="CenterFirstBlock">
+			<div class="CenterSecondBlock">
+				Admin panel not available
+			</div>
+		</div>
+		}
+	</body>
+</html>

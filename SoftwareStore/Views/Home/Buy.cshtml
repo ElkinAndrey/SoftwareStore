@@ -1,0 +1,42 @@
+﻿@model int;
+
+@{
+	Layout = null;
+}
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Software Store</title>
+		<link rel="stylesheet" href="~/css/AllStyles.css"/>
+		<link rel="stylesheet" href="~/css/Home/Buy.css"/>
+	</head>
+	<body spellcheck="false">
+		<div id="Center">
+			<div id="Head">
+				<div class="HeadPanelSortby">Software Store</div>
+				<div class="HeadPanelSortby">@ViewBag.Name</div>
+				
+				@if(@ViewBag.Name == "")
+				{
+					<div>@Html.ActionLink("Sign in", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Head2Start", draggable="false"})</div>
+				}
+				else
+				{
+					<div>@Html.ActionLink("Sign out", "Login", "Start", routeValues: null, htmlAttributes: new { @class = "Head2Start", draggable="false"})</div>
+				}
+			</div>
+			<div id="Body" style="user-select: text; word-wrap: break-word;">
+				<h1>Buy</h1>
+				<div style="user-select: text; word-wrap: break-word;">
+					<p style="user-select: text; word-wrap: break-word;">Transfer payment to the card 1234 5678 9101 1121.</p>
+					<p style="user-select: text; word-wrap: break-word;">In the payment message, write your login and the product you are purchasing.</p>
+					<p style="user-select: text; word-wrap: break-word;">If you have any problems with payment, please email mocliamg@gmail.com</p>
+				</div>
+				<form asp-controller="Home">
+					<button class="Button1" type="submit" asp-action="Product" asp-route-id=@Model>Back</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

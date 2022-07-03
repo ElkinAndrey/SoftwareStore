@@ -1,0 +1,26 @@
+﻿body {
+    margin: 50px 150px;
+}
+
+#GiveAdmin {
+    display: flex;
+}
+
+#AddPanel {
+}
+
+#AddPanelButton {
+    margin-bottom: 30px;
+}
+
+#file {
+    display: none;
+}
+
+#image {
+    display: none;
+}
+
+#Button {
+    margin: 10px 0px 30px 0px;
+}

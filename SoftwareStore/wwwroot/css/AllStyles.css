@@ -1,0 +1,127 @@
+﻿@font-face {
+    font-family: Varela Round; /* Гарнитура шрифта */
+    src: url(../VarelaRound-Regular.ttf); /* Путь к файлу со шрифтом */
+}
+
+* {
+    font-family: Varela Round, Arial;
+
+    user-select: none;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.CenterFirstBlock {
+    position: fixed;
+    z-index: 10000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: auto;
+}
+
+.CenterSecondBlock {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.Button1 {
+    font-size: 20px;
+    padding: 6px 20px;
+    border: solid 0px;
+    border-radius: 5px;
+    background-color: #57c49e;
+    transition: all 0.05s linear;
+    text-decoration: none;
+    color: black;
+}
+
+.Button1:active {
+    background-color: #4d957c;
+    transition: all 0.05s linear;
+}
+
+.Button2 {
+    font-size: 20px;
+    padding: 6px 20px;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #57c49e;
+    background-color: rgba(221, 244, 236, 0);
+    transition: all 0.05s linear;
+    text-decoration: none;
+}
+
+.Button2:hover {
+    color: #4d957c;
+    background-color: rgba(234, 249, 244, 255);
+    transition: all 0.2s linear;
+}
+
+.Button2:active {
+    color: #4d957c;
+    background-color: #a2e7cf;
+    transition: all 0.05s linear;
+}
+
+.Button3 {
+    width: 14px;
+    height: 14px;
+    border-radius: 8px;
+    border: solid 1px #57c49e;
+}
+
+.Button4 {
+    font-size: 20px;
+    padding: 5px 20px;
+    border: solid 1px #57c49e;
+    border-radius: 5px;
+    background-color: #eeeeee;
+    transition: all 0.05s linear;
+    text-decoration: none;
+    color: black;
+}
+
+.Button4:active {
+    background-color: #d9d9d9;
+    transition: all 0.05s linear;
+}
+
+.Input1 {
+    font-size: 20px;
+    padding: 5px;
+    border: 1px solid #969696;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: all 0.2s linear;
+}
+
+.Input1:focus {
+    background-color: #eaeaea;
+    transition: all 0.2s linear;
+}
+
+.Block1 {
+    background-color: #fafafa;
+    border: solid 1px #d9d9d9;
+    border-radius: 5px;
+}
+
