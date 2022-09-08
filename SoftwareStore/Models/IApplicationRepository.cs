@@ -3,7 +3,7 @@
     public interface IApplicationRepository
     {
         public void AddAccount(Account account);
-        public Account? CheckNameAccount(Account account);
+        public Account? CheckNameAccount(string account);
         public Account? CheckIdAccount(int id);
     }
 }
