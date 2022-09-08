@@ -1,1 +1,26 @@
-﻿Login
+﻿@model LoginViewModel
+<h1>Login</h1>
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <input hidden asp-for="ReturnUrl" />
+    <div>
+        <label>Name</label>
+        <input asp-for="Name"/>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email"/>
+    </div>
+    
+    <div>
+        <label>Password</label>
+        <input asp-for="Password"/>
+    </div>
+
+    <p>
+        <button type="submit">Login</button>
+    </p>
+</form>
+
+<a asp-controller="Account" asp-action="Registration">[Registration]</a>
