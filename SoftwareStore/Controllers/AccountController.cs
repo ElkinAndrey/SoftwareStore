@@ -39,7 +39,10 @@ namespace SoftwareStore.Controllers
         [AllowAnonymous]
         public IActionResult Registration(RegistrationViewModel model)
         {
-            return View();
+            Account? account = applicationRepository.CheckNameAccount(model.Name);
+            if (account != null)
+                return View(model);
+            return RedirectToLocal(model.ReturnUrl);
         }
 
         private IActionResult RedirectToLocal(string returnUrl)
