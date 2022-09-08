@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SoftwareStore.Models.ViewModel;
 
 namespace SoftwareStore.Controllers
 {
@@ -11,6 +13,14 @@ namespace SoftwareStore.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Login(LoginViewModel model)
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         public IActionResult Registration(string returnURL)
         {
