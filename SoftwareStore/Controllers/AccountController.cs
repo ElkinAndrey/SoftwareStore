@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SoftwareStore.Models.ViewModel;
 using SoftwareStore.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace SoftwareStore.Controllers
 {
@@ -19,13 +21,22 @@ namespace SoftwareStore.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account == null)
                 return View(model);
             if (account.Password != model.Password)
                 return View(model);
+
+            var claims = new List<Claim>
+            {
+                new Claim("Demo", "Value")
+            };
+            var claimIdentity = new ClaimsIdentity(claims, "Cookie");
+            var claimPricipal = new ClaimsPrincipal(claimIdentity);
+            await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
+
             return RedirectToLocal(model.ReturnUrl);
         }
 
@@ -37,11 +48,20 @@ namespace SoftwareStore.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Registration(RegistrationViewModel model)
+        public async Task<IActionResult> Registration(RegistrationViewModel model)
         {
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account != null)
                 return View(model);
+
+            var claims = new List<Claim>
+            {
+                new Claim("Demo", "Value")
+            };
+            var claimIdentity = new ClaimsIdentity(claims, "Cookie");
+            var claimPricipal = new ClaimsPrincipal(claimIdentity);
+            await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
+
             return RedirectToLocal(model.ReturnUrl);
         }
 
