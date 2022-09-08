@@ -50,10 +50,5 @@
             }
             return null;
         }
-
-        public Account? CheckNameAccount(Account account)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
