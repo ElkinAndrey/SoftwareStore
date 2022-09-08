@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SoftwareStore.Controllers
 {
@@ -9,6 +10,13 @@ namespace SoftwareStore.Controllers
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
             return View();
+        }
+
+        public IActionResult LogOff()
+        {
+
+            HttpContext.SignOutAsync("Cookie"); // Удаление куки
+            return Redirect("/Home/Index");
         }
     }
 }
