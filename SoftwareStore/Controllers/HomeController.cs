@@ -7,6 +7,7 @@ namespace SoftwareStore.Controllers
         public IActionResult Index()
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
             return View();
         }
     }

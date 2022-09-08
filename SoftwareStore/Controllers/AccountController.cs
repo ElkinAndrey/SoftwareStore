@@ -30,9 +30,9 @@ namespace SoftwareStore.Controllers
                 return View(model);
 
             var claims = new List<Claim>
-            {
-                new Claim("Demo", "Value")
-            };
+                        {
+                            new Claim(ClaimTypes.Name, model.Name)
+                        };
             var claimIdentity = new ClaimsIdentity(claims, "Cookie");
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
@@ -55,9 +55,9 @@ namespace SoftwareStore.Controllers
                 return View(model);
 
             var claims = new List<Claim>
-            {
-                new Claim("Demo", "Value")
-            };
+                        {
+                            new Claim(ClaimTypes.Name, model.Name)
+                        };
             var claimIdentity = new ClaimsIdentity(claims, "Cookie");
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
