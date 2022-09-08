@@ -35,6 +35,13 @@ namespace SoftwareStore.Controllers
             return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Registration(RegistrationViewModel model)
+        {
+            return View();
+        }
+
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
