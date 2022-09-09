@@ -18,5 +18,15 @@ namespace SoftwareStore.Controllers
             HttpContext.SignOutAsync("Cookie"); // Удаление куки
             return Redirect("/Home/Index");
         }
+
+        public ViewResult Product()
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            object id = RouteData.Values["id"];
+            string Name = id.ToString();
+            return View(id);
+        }
     }
 }

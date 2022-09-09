@@ -22,5 +22,5 @@ app.UseAuthorization(); // Добавление авторизации
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"); // От куда начинать
+    pattern: "{controller=Home}/{action=Index}/{id=DefaultId}"); // От куда начинать
 app.Run();

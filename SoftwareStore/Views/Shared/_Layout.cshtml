@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>Software Store</h1>
+
+    @if (ViewBag.IsAuthenticated)
+    {
+        <div>Name : @ViewBag.Name </div>
+        <div>IsAuthenticated : @ViewBag.IsAuthenticated</div>
+        <a asp-controller="Home" asp-action="LogOff">[Log out]</a>
+    }
+    else
+    {
+        <div>Not account</div>
+        <a asp-controller="Account" asp-action="Login">[Login]</a>
+        <a asp-controller="Account" asp-action="Registration">[Registration]</a>
+    }
+    <div style="margin-top: 30px">
+        @RenderBody()
+    </div>
+</body>
+</html>

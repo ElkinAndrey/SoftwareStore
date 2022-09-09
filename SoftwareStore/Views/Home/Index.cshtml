@@ -1,14 +1,13 @@
-﻿<h1>Software Store</h1>
+﻿
 
-@if (ViewBag.IsAuthenticated)
-{
-    <div>Name : @ViewBag.Name </div>
-    <div>IsAuthenticated : @ViewBag.IsAuthenticated</div>
-    <a asp-controller="Home" asp-action="LogOff">[Log out]</a>
+@{
+    Layout = "_Layout";
 }
-else
-{
-    <div>Not account</div>
-    <a asp-controller="Account" asp-action="Login">[Login]</a>
-    <a asp-controller="Account" asp-action="Registration">[Registration]</a>
-}
+
+
+<h1>Products</h1>
+<div>
+    <a asp-controller="Home" asp-action="Product" asp-route-id="Product1">[Product1]</a>
+    <a asp-controller="Home" asp-action="Product" asp-route-id="Product2">[Product2]</a>
+    <a asp-controller="Home" asp-action="Product" asp-route-id="Product3">[Product3]</a>
+</div>
