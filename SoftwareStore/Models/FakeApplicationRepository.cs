@@ -4,9 +4,9 @@ namespace SoftwareStore.Models
 {
     public class FakeApplicationRepository : IApplicationRepository
     {
-        private List<Account> Accounts { get; } 
+        public List<Account> Accounts { get; }
 
-        private List<Software> Softwares { get; }
+        public List<Software> Softwares { get; }
 
         public FakeApplicationRepository()
         {
@@ -40,16 +40,16 @@ namespace SoftwareStore.Models
                     Name = "Software2",
                     ShortInformation = "Short Information about Software2",
                     Information = "Information about Software2",
-                    Price = 1
+                    Price = 2
                 },
             };
         }
 
-        public void AddAccount(Account account)
+        public void AddAccount(Account? account)
         {
             Accounts.Add(account);
         }
-        public Account? CheckNameAccount(string name)
+        public Account? CheckNameAccount(string? name)
         {
             foreach (var account in Accounts)
             {
@@ -61,7 +61,7 @@ namespace SoftwareStore.Models
             return null;
         }
 
-        public Account? CheckIdAccount(int id)
+        public Account? CheckIdAccount(int? id)
         {
             foreach (var account in Accounts)
             {
@@ -73,11 +73,11 @@ namespace SoftwareStore.Models
             return null;
         }
 
-        public void AddSoftware(Software software)
+        public void AddSoftware(Software? software)
         {
             Softwares.Add(software);
         }
-        public Software? CheckNameSoftware(string name)
+        public Software? CheckNameSoftware(string? name)
         {
             foreach (var software in Softwares)
             {
@@ -88,7 +88,7 @@ namespace SoftwareStore.Models
             }
             return null;
         }
-        public Software? CheckIdSoftware(int id)
+        public Software? CheckIdSoftware(int? id)
         {
             foreach (var software in Softwares)
             {

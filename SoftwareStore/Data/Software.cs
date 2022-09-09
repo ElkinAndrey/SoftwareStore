@@ -6,6 +6,6 @@
         public string Name { get; set; } = ""; // Имя программы
         public string ShortInformation { get; set; } = ""; // Краткая информация о программе
         public string Information { get; set; } = ""; // Информация о программе
-        public double Price { get; set; } // Цена программы
+        public decimal Price { get; set; } // Цена программы
     }
 }

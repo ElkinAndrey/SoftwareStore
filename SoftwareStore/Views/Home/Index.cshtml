@@ -1,13 +1,18 @@
-﻿
+﻿@model List<Software>
 
 @{
     Layout = "_Layout";
 }
 
-
 <h1>Products List</h1>
 <div>
-    <a asp-controller="Home" asp-action="Product" asp-route-id="Product1">[Product1]</a>
-    <a asp-controller="Home" asp-action="Product" asp-route-id="Product2">[Product2]</a>
-    <a asp-controller="Home" asp-action="Product" asp-route-id="Product3">[Product3]</a>
+    @foreach (var i in @Model)
+    {
+        <div style="border: solid 3px black; margin: 10px">
+            <h2>@i.Name</h2>
+            <div>@i.ShortInformation</div>
+            <div>@i.Price</div>
+            <a asp-controller="Home" asp-action="Product" asp-route-id=@i.Name>[Open]</a>
+        </div>
+    }
 </div>

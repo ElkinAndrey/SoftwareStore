@@ -1,15 +1,21 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using SoftwareStore.Models;
 
 namespace SoftwareStore.Controllers
 {
     public class HomeController : Controller
     {
+        private IApplicationRepository actionResult = new FakeApplicationRepository();
+
         public IActionResult Index()
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
-            return View();
+
+            List<Software> softwares = actionResult.Softwares;
+
+            return View(softwares);
         }
 
         public IActionResult LogOff()
@@ -26,9 +32,12 @@ namespace SoftwareStore.Controllers
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
 
-            object id = RouteData.Values["id"];
-            string Name = id.ToString();
-            return View(id);
+            object? id = RouteData.Values["id"];
+            string? name = id?.ToString();
+
+            Software? software = actionResult.CheckNameSoftware(name);
+
+            return View(software);
         }
     }
 }

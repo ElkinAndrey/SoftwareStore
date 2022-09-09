@@ -1,9 +1,11 @@
-﻿@model string
+﻿@model Software
 
 @{
     Layout = "_Layout";
 }
 
-<h1>@Model</h1>
+<h1>@Model.Name</h1>
+<div>@Model.Information</div>
+<div>@Model.Price</div>
 
 <a asp-controller="Home" asp-action="Index">[Home]</a>

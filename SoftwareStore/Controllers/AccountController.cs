@@ -4,6 +4,7 @@ using SoftwareStore.Models.ViewModel;
 using SoftwareStore.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using SoftwareStore.Data;
 
 namespace SoftwareStore.Controllers
 {
