@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SoftwareStore.Models;
 
@@ -38,6 +39,23 @@ namespace SoftwareStore.Controllers
             Software? software = actionResult.CheckNameSoftware(name);
 
             return View(software);
+        }
+
+        [Authorize(Policy = "Administrator")]
+        public IActionResult Admin()
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            return View();
+        }
+
+        public IActionResult AccessDenied()
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            return View();
         }
     }
 }

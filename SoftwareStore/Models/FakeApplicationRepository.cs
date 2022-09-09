@@ -16,7 +16,8 @@ namespace SoftwareStore.Models
                 {
                     Name = "A",
                     Email = "A@A.A",
-                    Password = "123"
+                    Password = "123",
+                    Role = "Administrator"
                 },
                 new Account
                 {

@@ -30,10 +30,23 @@ namespace SoftwareStore.Controllers
             if (account.Password != model.Password)
                 return View(model);
 
-            var claims = new List<Claim>
-                        {
-                            new Claim(ClaimTypes.Name, model.Name)
-                        };
+            List<Claim> claims;
+            if (account?.Role == "Administrator")
+            {
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, model.Name),
+                    new Claim(ClaimTypes.Role, "Administrator")
+                };
+            }
+            else
+            {
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, model.Name)
+                };
+            }
+
             var claimIdentity = new ClaimsIdentity(claims, "Cookie");
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
@@ -55,10 +68,23 @@ namespace SoftwareStore.Controllers
             if (account != null)
                 return View(model);
 
-            var claims = new List<Claim>
-                        {
-                            new Claim(ClaimTypes.Name, model.Name)
-                        };
+            List<Claim> claims;
+            if (account?.Role == "Administrator")
+            {
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, model.Name),
+                    new Claim(ClaimTypes.Role, "Administrator")
+                };
+            }
+            else
+            {
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, model.Name)
+                };
+            }
+
             var claimIdentity = new ClaimsIdentity(claims, "Cookie");
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки

@@ -6,5 +6,6 @@
         public string Name { get; set; } = ""; // Имя
         public string Email { get; set; } = ""; // Email
         public string Password { get; set; } = ""; // Пароль
+        public string Role { get; set; } = ""; // Роль
     }
 }
