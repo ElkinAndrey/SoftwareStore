@@ -62,6 +62,8 @@ namespace SoftwareStore.Controllers
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
 
+            applicationRepository.AddAccount(account);
+
             return RedirectToLocal(model.ReturnUrl);
         }
 
