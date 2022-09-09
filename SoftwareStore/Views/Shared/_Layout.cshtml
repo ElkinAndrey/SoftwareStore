@@ -8,7 +8,7 @@
 <body>
     <h1>Software Store</h1>
     
-    <a asp-controller="Home" asp-action="Admin">[Admin Panel]</a>
+    <a asp-controller="Admin" asp-action="Index">[Admin Panel]</a>
     @if (ViewBag.IsAuthenticated)
     {
         <div>Name : @ViewBag.Name </div>

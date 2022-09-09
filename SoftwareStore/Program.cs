@@ -8,7 +8,7 @@ builder.Services.AddAuthentication("Cookie") // Добавление аутентификации
     .AddCookie("Cookie", config =>
     {
         config.LoginPath = "/Account/Login"; // Куда перейти при попытке аутентификации
-        config.AccessDeniedPath = "/Home/AccessDenied";
+        config.AccessDeniedPath = "/Admin/AccessDenied";
     }); // Использование куки
 builder.Services.AddAuthorization(options =>
 {

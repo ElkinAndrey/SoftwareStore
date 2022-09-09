@@ -40,22 +40,5 @@ namespace SoftwareStore.Controllers
 
             return View(software);
         }
-
-        [Authorize(Policy = "Administrator")]
-        public IActionResult Admin()
-        {
-            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
-            ViewBag.Name = User.Identity.Name;
-
-            return View();
-        }
-
-        public IActionResult AccessDenied()
-        {
-            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
-            ViewBag.Name = User.Identity.Name;
-
-            return View();
-        }
     }
 }
