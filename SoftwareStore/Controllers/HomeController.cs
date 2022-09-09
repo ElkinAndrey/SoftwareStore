@@ -21,6 +21,8 @@ namespace SoftwareStore.Controllers
 
         public ViewResult Product()
         {
+            // Тут продукт должен браться из базы данных, если продукт не найден, то на странице вывести сообщение "Продукт не найден"
+
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
 

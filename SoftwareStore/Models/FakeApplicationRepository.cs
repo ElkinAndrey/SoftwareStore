@@ -1,8 +1,12 @@
-﻿namespace SoftwareStore.Models
+﻿using SoftwareStore.Data;
+
+namespace SoftwareStore.Models
 {
     public class FakeApplicationRepository : IApplicationRepository
     {
-        List<Account> Accounts { get; } = new List<Account>();
+        private List<Account> Accounts { get; } 
+
+        private List<Software> Softwares { get; }
 
         public FakeApplicationRepository()
         {
@@ -20,6 +24,24 @@
                     Email = "B@B.B",
                     Password = "456"
                 }
+            };
+
+            this.Softwares = new List<Software>
+            {
+                new Software
+                {
+                    Name = "Software1",
+                    ShortInformation = "Short Information about Software1",
+                    Information = "Information about Software1",
+                    Price = 1
+                },
+                new Software
+                {
+                    Name = "Software2",
+                    ShortInformation = "Short Information about Software2",
+                    Information = "Information about Software2",
+                    Price = 1
+                },
             };
         }
 
@@ -46,6 +68,33 @@
                 if (id == account.Id)
                 {
                     return account;
+                }
+            }
+            return null;
+        }
+
+        public void AddSoftware(Software software)
+        {
+            Softwares.Add(software);
+        }
+        public Software? CheckNameSoftware(string name)
+        {
+            foreach (var software in Softwares)
+            {
+                if (name == software.Name)
+                {
+                    return software;
+                }
+            }
+            return null;
+        }
+        public Software? CheckIdSoftware(int id)
+        {
+            foreach (var software in Softwares)
+            {
+                if (id == software.Id)
+                {
+                    return software;
                 }
             }
             return null;

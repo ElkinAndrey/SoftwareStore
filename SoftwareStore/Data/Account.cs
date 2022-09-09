@@ -1,4 +1,4 @@
-﻿namespace SoftwareStore.Models
+﻿namespace SoftwareStore.Data
 {
     public class Account
     {
