@@ -20,21 +20,23 @@ namespace SoftwareStore.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Login(string returnURL)
+        public IActionResult Login(string returnURL) // При входе в аккаунт
         {
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model) // проверка данных при входе в аккаунт
         {
+            // Проверка данных
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account == null)
                 return View(model);
             if (account.Password != model.Password)
                 return View(model);
 
+            // Выдача роли
             List<Claim> claims;
             if (account?.Role == "Administrator")
             {
@@ -52,6 +54,7 @@ namespace SoftwareStore.Controllers
                 };
             }
 
+            // Добавление аккаунта в куки
             var claimIdentity = new ClaimsIdentity(claims, "Cookie");
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
@@ -60,19 +63,21 @@ namespace SoftwareStore.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Registration(string returnURL)
+        public IActionResult Registration(string returnURL) // При регистрации аккаунта
         {
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Registration(RegistrationViewModel model)
+        public async Task<IActionResult> Registration(RegistrationViewModel model) // проверка данных при регистрации аккаунта
         {
+            // Проверка данных
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account != null)
                 return View(model);
 
+            // Выдача роли
             List<Claim> claims;
             if (account?.Role == "Administrator")
             {
@@ -90,11 +95,12 @@ namespace SoftwareStore.Controllers
                 };
             }
 
+            // Добавление аккаунта в куки
             var claimIdentity = new ClaimsIdentity(claims, "Cookie");
             var claimPricipal = new ClaimsPrincipal(claimIdentity);
             await HttpContext.SignInAsync("Cookie", claimPricipal); // Добавление куки
 
-            applicationRepository.AddAccount(new Account
+            applicationRepository.AddAccount(new Account // Добавление аккаунта в базу данных
             {
                 Name = model.Name,
                 Email = model.Email,
@@ -104,7 +110,7 @@ namespace SoftwareStore.Controllers
             return RedirectToLocal(model.ReturnUrl);
         }
 
-        private IActionResult RedirectToLocal(string returnUrl)
+        private IActionResult RedirectToLocal(string returnUrl) // Перенаправить пользователя на главную страницу сайта, если нет Url на который нужно перейти
         {
             if (Url.IsLocalUrl(returnUrl))
             {

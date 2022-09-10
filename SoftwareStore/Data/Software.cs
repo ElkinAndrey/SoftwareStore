@@ -1,5 +1,6 @@
 ﻿namespace SoftwareStore.Data
 {
+    // Программа, которую будут покупать пользователи
     public class Software
     {
         public int Id { get; set; } // ID 

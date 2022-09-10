@@ -1,5 +1,6 @@
 ﻿namespace SoftwareStore.Data
 {
+    // Аккаунт пользователя
     public class Account
     {
         public int Id { get; set; } = 0; // ID

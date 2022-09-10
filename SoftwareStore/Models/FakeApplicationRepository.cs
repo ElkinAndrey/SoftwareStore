@@ -2,6 +2,7 @@
 
 namespace SoftwareStore.Models
 {
+    // Класс для работы с базой данных. Реализует интерфейс IApplicationRepository
     public class FakeApplicationRepository : IApplicationRepository
     {
         public List<Account> Accounts { get; } = new List<Account>(){
