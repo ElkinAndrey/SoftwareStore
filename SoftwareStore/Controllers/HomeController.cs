@@ -7,7 +7,12 @@ namespace SoftwareStore.Controllers
 {
     public class HomeController : Controller
     {
-        private IApplicationRepository actionResult = new FakeApplicationRepository();
+        private IApplicationRepository actionResult;
+
+        public HomeController(IApplicationRepository actionResult)
+        {
+            this.actionResult = actionResult;
+        }
 
         public IActionResult Index()
         {

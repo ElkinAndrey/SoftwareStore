@@ -12,7 +12,12 @@ namespace SoftwareStore.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        IApplicationRepository applicationRepository = new FakeApplicationRepository();
+        IApplicationRepository applicationRepository;
+
+        public AccountController(IApplicationRepository applicationRepository)
+        {
+            this.applicationRepository = applicationRepository;
+        }
 
         [AllowAnonymous]
         public IActionResult Login(string returnURL)

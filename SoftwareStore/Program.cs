@@ -1,5 +1,6 @@
 // ƒаниил —ергеевич. Ёту часть кода € писал сам (ни кому за это не платил). я оставл€ю здесь такие подробные коментарии дл€ себ€, чтобы в будущем понимать, что и зачем нужно, потому что это сложные непон€тные слова
 
+using SoftwareStore.Models;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,9 @@ builder.Services.AddAuthorization(options =>
         builder.RequireClaim(ClaimTypes.Role, "Administrator"); // ƒобавление рои администратора
     });
 }); // ƒобавление авторизации
+
+
+builder.Services.AddTransient<IApplicationRepository, FakeApplicationRepository>(); // передаю IApplicationRepository в конструкторы контроллеров
 
 builder.Services.AddControllersWithViews(); // ƒобавление MVC
 

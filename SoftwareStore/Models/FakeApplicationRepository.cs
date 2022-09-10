@@ -4,14 +4,7 @@ namespace SoftwareStore.Models
 {
     public class FakeApplicationRepository : IApplicationRepository
     {
-        public List<Account> Accounts { get; }
-
-        public List<Software> Softwares { get; }
-
-        public FakeApplicationRepository()
-        {
-            this.Accounts = new List<Account>
-            {
+        public List<Account> Accounts { get; } = new List<Account>(){
                 new Account
                 {
                     Name = "A",
@@ -27,8 +20,7 @@ namespace SoftwareStore.Models
                 }
             };
 
-            this.Softwares = new List<Software>
-            {
+        public List<Software> Softwares { get; } = new List<Software>(){
                 new Software
                 {
                     Name = "Software1",
@@ -44,7 +36,6 @@ namespace SoftwareStore.Models
                     Price = 2
                 },
             };
-        }
 
         public void AddAccount(Account? account)
         {
