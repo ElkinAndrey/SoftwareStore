@@ -7,11 +7,11 @@ namespace SoftwareStore.Controllers
 {
     public class HomeController : Controller
     {
-        private IApplicationRepository actionResult;
+        private IApplicationRepository applicationRepository;
 
         public HomeController(IApplicationRepository actionResult)
         {
-            this.actionResult = actionResult;
+            this.applicationRepository = actionResult;
         }
 
         public IActionResult Index()
@@ -19,7 +19,7 @@ namespace SoftwareStore.Controllers
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
 
-            List<Software> softwares = actionResult.Softwares;
+            List<Software> softwares = applicationRepository.Softwares;
 
             return View(softwares);
         }
@@ -41,7 +41,7 @@ namespace SoftwareStore.Controllers
             object? id = RouteData.Values["id"];
             string? name = id?.ToString();
 
-            Software? software = actionResult.CheckNameSoftware(name);
+            Software? software = applicationRepository.CheckNameSoftware(name);
 
             return View(software);
         }

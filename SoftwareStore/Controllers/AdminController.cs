@@ -6,6 +6,14 @@ namespace SoftwareStore.Controllers
     [Authorize(Policy = "Administrator")]
     public class AdminController : Controller
     {
+
+        private IApplicationRepository applicationRepository;
+
+        public AdminController(IApplicationRepository applicationRepository)
+        {
+            this.applicationRepository = applicationRepository;
+        }
+
         public IActionResult Index() // Главная страница админ панели
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
@@ -18,6 +26,22 @@ namespace SoftwareStore.Controllers
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GiveAdmin(GiveAdminViewModel model) // страница, на которой можно выдать админку
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            // Проверка данных
+            Account? account = applicationRepository.CheckNameAccount(model.Name);
+            if (account == null)
+                return View(model);
+
+            account.Role = "Administrator";
 
             return View();
         }
