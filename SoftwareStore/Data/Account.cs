@@ -8,5 +8,6 @@
         public string Email { get; set; } = ""; // Email
         public string Password { get; set; } = ""; // Пароль
         public string Role { get; set; } = ""; // Роль
+        public List<Software> Softwares { get; set; } = new List<Software>(); // Список купленных программ
     }
 }

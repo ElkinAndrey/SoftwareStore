@@ -1,4 +1,4 @@
-﻿@model List<Software>
+﻿@model List<IndexViewModel>
 
 @{
     Layout = "_Layout";
@@ -8,11 +8,23 @@
 <div>
     @foreach (var i in @Model)
     {
-        <div style="border: solid 3px black; margin: 10px">
-            <h2>@i.Name</h2>
-            <div>@i.ShortInformation</div>
-            <div>@i.Price</div>
-            <a asp-controller="Home" asp-action="Product" asp-route-id=@i.Name>[Open]</a>
-        </div>
+        @if (i.IsBought)
+        {
+            <div style="border: solid 3px #57c49e; margin: 10px">
+                <h2>@i.Software.Name</h2>
+                <div>@i.Software.ShortInformation</div>
+                <div>@i.Software.Price</div>
+                <a asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name>[Open]</a>
+            </div>
+        }
+        else
+        {
+            <div style="border: solid 3px black; margin: 10px">
+                <h2>@i.Software.Name</h2>
+                <div>@i.Software.ShortInformation</div>
+                <div>@i.Software.Price</div>
+                <a asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name>[Open]</a>
+            </div>
+        }
     }
 </div>

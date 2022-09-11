@@ -9,9 +9,14 @@ namespace SoftwareStore.Models
 
         public List<Software> Softwares { get; } = FakeDataBase.Softwares;
 
+        public FakeApplicationRepository()
+        {
+            this.GiveSoftware(Accounts[0], Softwares[0]);
+        }
+
         public void AddAccount(Account? account)
         {
-            FakeDataBase.Accounts.Add(account);
+            Accounts.Add(account);
         }
         public Account? CheckNameAccount(string? name)
         {
@@ -39,7 +44,7 @@ namespace SoftwareStore.Models
 
         public void AddSoftware(Software? software)
         {
-            FakeDataBase.Softwares.Add(software);
+            Softwares.Add(software);
         }
         public Software? CheckNameSoftware(string? name)
         {
@@ -62,6 +67,15 @@ namespace SoftwareStore.Models
                 }
             }
             return null;
+        }
+
+        public void GiveSoftware(Account? account, Software? software)
+        {
+            if (account != null && software != null)
+            {
+                account.Softwares.Add(software);
+                software.Accounts.Add(account);
+            }
         }
     }
 }

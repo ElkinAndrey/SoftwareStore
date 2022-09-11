@@ -19,9 +19,28 @@ namespace SoftwareStore.Controllers
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
 
+            Account? account = applicationRepository.CheckNameAccount(ViewBag.Name);
             List<Software> softwares = applicationRepository.Softwares;
+            List<IndexViewModel> model = new List<IndexViewModel>();
+            foreach (Software software in softwares) // Будет указанно, купленна ли программа пользователем
+            {
+                bool IsBought = false;
+                foreach (Account acc in software.Accounts) // Есть ли аккаунт в списке аккаунтов, купивших программу
+                {
+                    if(acc == account)
+                    {
+                        IsBought = true;
+                        break;
+                    }
+                }
+                model.Add(new IndexViewModel
+                {
+                    Software = software,
+                    IsBought = IsBought
+                });
+            }
 
-            return View(softwares);
+            return View(model);
         }
 
         public IActionResult LogOff()

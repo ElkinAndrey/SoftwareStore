@@ -8,5 +8,6 @@
         public string ShortInformation { get; set; } = ""; // Краткая информация о программе
         public string Information { get; set; } = ""; // Информация о программе
         public decimal Price { get; set; } // Цена программы
+        public List<Account> Accounts { get; set; } = new List<Account>(); // Список людей, купивших программу
     }
 }
