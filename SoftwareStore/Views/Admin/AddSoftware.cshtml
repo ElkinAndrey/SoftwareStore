@@ -1,8 +1,37 @@
-﻿@{
+﻿@model AddSoftwareViewModel
+
+@{
     Layout = "_Layout";
 }
 
 <h1>Add Software</h1>
+
+<form asp-controller="Admin" asp-action="AddSoftware" method="post">
+    <input hidden asp-for="ReturnUrl" />
+    <div>
+        <label>Name</label>
+        <input asp-for="Software.Name"/>
+    </div>
+
+    <div>
+        <label>Short Information</label>
+        <input asp-for="Software.ShortInformation"/>
+    </div>
+
+    <div>
+        <label>Information</label>
+        <input asp-for="Software.Information"/>
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input asp-for="Software.Price"/>
+    </div>
+
+    <p>
+        <button type="submit">Add software</button>
+    </p>
+</form>
 
 <a asp-controller="Admin" asp-action="Index">[Admin]</a>
 <a asp-controller="Home" asp-action="Index">[Home]</a>

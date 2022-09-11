@@ -62,6 +62,22 @@ namespace SoftwareStore.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddSoftware(AddSoftwareViewModel model) // страница, на которой можно добавить новую программу на сайт
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            // Проверка данных
+            Account? account = applicationRepository.CheckNameAccount(model.Software.Name);
+            if (account != null)
+                return View(model);
+
+            applicationRepository.AddSoftware(model.Software);
+
+            return View();
+        }
+
         [AllowAnonymous]
         public IActionResult AccessDenied() // страница, на которую перейдет пользователь без роли администратора
         {

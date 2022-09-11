@@ -11,7 +11,7 @@ namespace SoftwareStore.Models
 
         public void AddAccount(Account? account)
         {
-            Accounts.Add(account);
+            FakeDataBase.Accounts.Add(account);
         }
         public Account? CheckNameAccount(string? name)
         {
@@ -39,7 +39,7 @@ namespace SoftwareStore.Models
 
         public void AddSoftware(Software? software)
         {
-            Softwares.Add(software);
+            FakeDataBase.Softwares.Add(software);
         }
         public Software? CheckNameSoftware(string? name)
         {
