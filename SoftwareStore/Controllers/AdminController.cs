@@ -54,6 +54,25 @@ namespace SoftwareStore.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GiveSoftware(GiveSoftwareViewModel model) // страница, на которой можно выдать пользователю доступ к програме
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            Account? account = applicationRepository.CheckNameAccount(model.Account);
+            if (account == null)
+                return View(model);
+
+            Software? software = applicationRepository.CheckNameSoftware(model.Software);
+            if (software == null)
+                return View(model);
+
+            applicationRepository.GiveSoftware(account, software); // Выдать пользователю программу
+
+            return View();
+        }
+
         public IActionResult AddSoftware() // страница, на которой можно добавить новую программу на сайт
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;

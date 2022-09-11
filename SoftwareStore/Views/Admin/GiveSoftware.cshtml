@@ -1,8 +1,27 @@
-﻿@{
+﻿@model GiveSoftwareViewModel
+
+@{
     Layout = "_Layout";
 }
 
 <h1>Give Software</h1>
+
+<form asp-controller="Admin" asp-action="GiveSoftware" method="post">
+    <input hidden asp-for="ReturnUrl" />
+    <div>
+        <label>Name account</label>
+        <input asp-for="Account"/>
+    </div>
+
+    <div>
+        <label>Name software</label>
+        <input asp-for="Software"/>
+    </div>
+
+    <p>
+        <button type="submit">Give software</button>
+    </p>
+</form>
 
 <a asp-controller="Admin" asp-action="Index">[Admin]</a>
 <a asp-controller="Home" asp-action="Index">[Home]</a>
