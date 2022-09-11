@@ -5,38 +5,9 @@ namespace SoftwareStore.Models
     // Класс для работы с базой данных. Реализует интерфейс IApplicationRepository
     public class FakeApplicationRepository : IApplicationRepository
     {
-        public List<Account> Accounts { get; } = new List<Account>(){
-                new Account
-                {
-                    Name = "A",
-                    Email = "A@A.A",
-                    Password = "123",
-                    Role = "Administrator"
-                },
-                new Account
-                {
-                    Name = "B",
-                    Email = "B@B.B",
-                    Password = "456"
-                }
-            };
+        public List<Account> Accounts { get; } = FakeDataBase.Accounts;
 
-        public List<Software> Softwares { get; } = new List<Software>(){
-                new Software
-                {
-                    Name = "Software1",
-                    ShortInformation = "Short Information about Software1",
-                    Information = "Information about Software1",
-                    Price = 1
-                },
-                new Software
-                {
-                    Name = "Software2",
-                    ShortInformation = "Short Information about Software2",
-                    Information = "Information about Software2",
-                    Price = 2
-                },
-            };
+        public List<Software> Softwares { get; } = FakeDataBase.Softwares;
 
         public void AddAccount(Account? account)
         {
