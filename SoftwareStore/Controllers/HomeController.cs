@@ -25,14 +25,16 @@ namespace SoftwareStore.Controllers
             foreach (Software software in softwares) // Будет указанно, купленна ли программа пользователем
             {
                 bool IsBought = false;
-                foreach (Account acc in software.Accounts) // Есть ли аккаунт в списке аккаунтов, купивших программу
-                {
-                    if(acc == account)
+                if (account != null)
+                    foreach (Software sf in account.Softwares) // Есть ли аккаунт в списке аккаунтов, купивших программу
                     {
-                        IsBought = true;
-                        break;
+                        if(software == sf)
+                        {
+                            IsBought = true;
+                            break;
+                        }
                     }
-                }
+
                 model.Add(new IndexViewModel
                 {
                     Software = software,
@@ -50,7 +52,7 @@ namespace SoftwareStore.Controllers
             return Redirect("/Home/Index");
         }
 
-        public ViewResult Product()
+        public ActionResult Product()
         {
             // Тут продукт должен браться из базы данных, если продукт не найден, то на странице вывести сообщение "Продукт не найден"
 
@@ -62,7 +64,19 @@ namespace SoftwareStore.Controllers
 
             Software? software = applicationRepository.CheckNameSoftware(name);
 
+            if (software == null)
+                return Redirect("/Home/ProductNotFound");
+
             return View(software);
+        }
+
+        // Страница, запускаемая, если пользователь пытается перейти к продукту, которого нет
+        public IActionResult ProductNotFound()
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            return View();
         }
     }
 }
