@@ -4,8 +4,16 @@
     Layout = "_Layout";
 }
 
-<h1>@Model.Name @(ViewBag.IsBought ? "(Bought)" : "")</h1>
-<div>@Model.Information</div>
-<div>@Model.Price</div>
+<h1>Name : @Model.Name @(ViewBag.IsBought ? "(Bought)" : "")</h1>
+<div>Information : @Model.Information</div>
+<div>Price : @Model.Price</div>
+
+@foreach(var review in @Model.Reviews)
+{
+    <div style="border: 3px solid black; margin: 5px;">
+        <h3>@review.Account.Name</h3>
+        <div>@review.Information</div>
+    </div>
+}
 
 <a asp-controller="Home" asp-action="Index">[Home]</a>

@@ -24,7 +24,7 @@
                     Name = "Software1",
                     ShortInformation = "Short Information about Software1",
                     Information = "Information about Software1",
-                    Price = 1
+                    Price = 1,
                 },
                 new Software
                 {
@@ -34,5 +34,7 @@
                     Price = 2
                 },
             };
+
+        public static List<Review> Reviews { get; } = new List<Review>();
     }
 }

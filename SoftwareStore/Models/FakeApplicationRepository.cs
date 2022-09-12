@@ -9,9 +9,13 @@ namespace SoftwareStore.Models
 
         public List<Software> Softwares { get; } = FakeDataBase.Softwares;
 
+        public List<Review> Reviews { get; } = FakeDataBase.Reviews;
+
         public FakeApplicationRepository()
         {
             this.GiveSoftware(Accounts[0], Softwares[0]);
+            this.AddReview("comment1", Accounts[0], Softwares[0]);
+            this.AddReview("comment2", Accounts[0], Softwares[0]);
         }
 
         public void AddAccount(Account? account)
@@ -76,6 +80,23 @@ namespace SoftwareStore.Models
                 account.Softwares.Add(software);
                 software.Accounts.Add(account);
             }
+        }
+
+        public void AddReview(string? information, Account? account, Software? software)
+        {
+            if (information != null && account != null && software != null)
+            {
+                Review review = new Review()
+                {
+                    Information = information,
+                    Account = account,
+                    Software = software
+                };
+                Reviews.Add(review);
+                account.Reviews.Add(review);
+                software.Reviews.Add(review);
+            }
+
         }
     }
 }

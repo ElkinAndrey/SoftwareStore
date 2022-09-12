@@ -7,6 +7,7 @@ namespace SoftwareStore.Models
     {
         public List<Account> Accounts { get; } // Список всех аккаунтов
         public List<Software> Softwares { get; } // Список всех приложений
+        public List<Review> Reviews { get; } // Список всех коментариев
         public void AddAccount(Account? account); // Добавить аккаунт
         public Account? CheckNameAccount(string? name); // Найти аккаунт по имени
         public Account? CheckIdAccount(int? id); // Найти аккаунт по id
@@ -14,5 +15,6 @@ namespace SoftwareStore.Models
         public Software? CheckNameSoftware(string? name); // Найти приложение по имени
         public Software? CheckIdSoftware(int? id); // Найти приложение по id
         public void GiveSoftware(Account? account, Software? software);
+        public void AddReview(string? information, Account? account, Software? software);
     }
 }

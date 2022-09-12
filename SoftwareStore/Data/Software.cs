@@ -9,5 +9,6 @@
         public string Information { get; set; } = ""; // Информация о программе
         public decimal Price { get; set; } // Цена программы
         public List<Account> Accounts { get; set; } = new List<Account>(); // Список людей, купивших программу
+        public List<Review> Reviews { get; set; } = new List<Review>(); // Список оставленных коментариев
     }
 }
