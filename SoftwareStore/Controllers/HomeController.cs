@@ -58,6 +58,7 @@ namespace SoftwareStore.Controllers
 
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
+            ViewBag.IsBought = false;
 
             object? id = RouteData.Values["id"];
             string? name = id?.ToString();
@@ -66,6 +67,18 @@ namespace SoftwareStore.Controllers
 
             if (software == null)
                 return Redirect("/Home/ProductNotFound");
+
+            Account? account = applicationRepository.CheckNameAccount(ViewBag.Name);
+
+            if (account != null)
+                foreach (Software sf in account.Softwares) // Есть ли аккаунт в списке аккаунтов, купивших программу
+                {
+                    if (software == sf)
+                    {
+                        ViewBag.IsBought = true;
+                        break;
+                    }
+                }
 
             return View(software);
         }

@@ -4,7 +4,7 @@
     Layout = "_Layout";
 }
 
-<h1>@Model.Name</h1>
+<h1>@Model.Name @(ViewBag.IsBought ? "(Bought)" : "")</h1>
 <div>@Model.Information</div>
 <div>@Model.Price</div>
 
