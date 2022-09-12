@@ -1,19 +1,30 @@
-﻿@model Software
+﻿@model ProductViewModel
 
 @{
     Layout = "_Layout";
 }
 
-<h1>Name : @Model.Name @(ViewBag.IsBought ? "(Bought)" : "")</h1>
-<div>Information : @Model.Information</div>
-<div>Price : @Model.Price</div>
+<h1>Name : @Model.Software.Name @(Model.IsBought ? "(Bought)" : "")</h1>
+<div>Information : @Model.Software.Information</div>
+<div>Price : @Model.Software.Price</div>
 
-@foreach(var review in @Model.Reviews)
+<a asp-controller="Home" asp-action="Index">[Home]</a>
+
+@if (Model.IsBought)
+{
+    <form asp-controller="Home" asp-action="AddReview">
+		<h2>Review</h2>
+		<input name="information"></input>
+		<input type="hidden" name="softwareName" value="@Model.Software.Name" />
+	    <button>Add</button>
+	</form>
+}
+
+<h1>Comments</h1>
+@foreach(var review in @Model.Software.Reviews)
 {
     <div style="border: 3px solid black; margin: 5px;">
         <h3>@review.Account.Name</h3>
         <div>@review.Information</div>
     </div>
 }
-
-<a asp-controller="Home" asp-action="Index">[Home]</a>

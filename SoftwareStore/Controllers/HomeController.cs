@@ -56,32 +56,46 @@ namespace SoftwareStore.Controllers
         {
             // Тут продукт должен браться из базы данных, если продукт не найден, то на странице вывести сообщение "Продукт не найден"
 
+            ProductViewModel model = new ProductViewModel();
+
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
-            ViewBag.IsBought = false;
+            model.IsBought = false;
 
             object? id = RouteData.Values["id"];
             string? name = id?.ToString();
 
-            Software? software = applicationRepository.CheckNameSoftware(name);
+            model.Software = applicationRepository.CheckNameSoftware(name);
 
-            if (software == null)
+            if (model.Software == null)
                 return Redirect("/Home/ProductNotFound");
 
-            Account? account = applicationRepository.CheckNameAccount(ViewBag.Name);
+            model.Account = applicationRepository.CheckNameAccount(ViewBag.Name);
 
-            if (account != null)
-                foreach (Software sf in account.Softwares) // Есть ли аккаунт в списке аккаунтов, купивших программу
+            if (model.Account != null)
+                foreach (Software sf in model.Account.Softwares) // Есть ли аккаунт в списке аккаунтов, купивших программу
                 {
-                    if (software == sf)
+                    if (model.Software == sf)
                     {
-                        ViewBag.IsBought = true;
+                        model.IsBought = true;
                         break;
                     }
                 }
 
-            return View(software);
+            return View(model);
         }
+
+        public ActionResult AddReview(string information, string softwareName)
+        {
+            applicationRepository.AddReview(
+                information, 
+                applicationRepository.CheckNameAccount(User.Identity.Name), 
+                applicationRepository.CheckNameSoftware(softwareName));
+
+            return Redirect($"/Home/Product/{softwareName}");
+        }
+
+
 
         // Страница, запускаемая, если пользователь пытается перейти к продукту, которого нет
         public IActionResult ProductNotFound()

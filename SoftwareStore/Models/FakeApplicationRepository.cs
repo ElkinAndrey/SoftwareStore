@@ -14,8 +14,6 @@ namespace SoftwareStore.Models
         public FakeApplicationRepository()
         {
             this.GiveSoftware(Accounts[0], Softwares[0]);
-            this.AddReview("comment1", Accounts[0], Softwares[0]);
-            this.AddReview("comment2", Accounts[0], Softwares[0]);
         }
 
         public void AddAccount(Account? account)
