@@ -28,7 +28,7 @@ namespace SoftwareStore.Controllers
                 if (account != null)
                     foreach (Software sf in account.Softwares) // Есть ли аккаунт в списке аккаунтов, купивших программу
                     {
-                        if(software == sf)
+                        if (software == sf)
                         {
                             IsBought = true;
                             break;
@@ -88,8 +88,8 @@ namespace SoftwareStore.Controllers
         public ActionResult AddReview(string information, string softwareName)
         {
             applicationRepository.AddReview(
-                information, 
-                applicationRepository.CheckNameAccount(User.Identity.Name), 
+                information,
+                applicationRepository.CheckNameAccount(User.Identity.Name),
                 applicationRepository.CheckNameSoftware(softwareName));
 
             return Redirect($"/Home/Product/{softwareName}");
