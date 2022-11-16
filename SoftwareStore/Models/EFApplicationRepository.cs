@@ -34,7 +34,11 @@ namespace SoftwareStore.Models
         }
         public Account? CheckNameAccount(string? name)
         {
-            return null;
+            var blog = context.Accounts
+                .Include(u => u.Softwares)
+                .ThenInclude(u => u.Reviews)
+                .Where(b => b.Name == name).FirstOrDefault();
+            return blog;
         }
 
         public Account? CheckIdAccount(int? id)
