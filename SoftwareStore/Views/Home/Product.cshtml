@@ -19,6 +19,9 @@
 	    <button>Add</button>
 	</form>
 }
+else{
+    <a asp-controller="Home" asp-action="Buy">[Buy]</a>
+}
 
 <h1>Comments</h1>
 @foreach(var review in @Model.Software.Reviews)

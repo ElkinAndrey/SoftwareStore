@@ -105,5 +105,13 @@ namespace SoftwareStore.Controllers
 
             return View();
         }
+
+        public IActionResult Buy()
+        {
+            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+            ViewBag.Name = User.Identity.Name;
+
+            return View();
+        }
     }
 }
