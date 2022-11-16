@@ -49,7 +49,14 @@ namespace SoftwareStore.Models
 
         public void AddSoftware(Software? software)
         {
+            // Поиск элемента с именем
+            var blog = context.Softwares.Where(b => b.Name == software.Name).FirstOrDefault();
 
+            if (blog == null) // Чтобы не добавляло повторно
+            {
+                context.Softwares.Add(software);
+                context.SaveChanges();
+            }
         }
         public Software? CheckNameSoftware(string? name)
         {
