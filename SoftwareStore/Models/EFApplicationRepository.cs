@@ -68,7 +68,8 @@ namespace SoftwareStore.Models
         }
         public Software? CheckIdSoftware(int? id)
         {
-            return null;
+            var blog = context.Softwares.Find(id);
+            return blog;
         }
 
         public void GiveSoftware(Account? account, Software? software)
