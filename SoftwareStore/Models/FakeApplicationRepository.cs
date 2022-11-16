@@ -96,5 +96,11 @@ namespace SoftwareStore.Models
             }
 
         }
+
+        public void GiveAdmin(Account? account)
+        {
+            if (account != null)
+                account.Role = "Administrator";
+        }
     }
 }

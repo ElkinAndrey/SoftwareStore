@@ -15,5 +15,6 @@ namespace SoftwareStore.Models
         public Software? CheckIdSoftware(int? id); // Найти приложение по id
         public void GiveSoftware(Account? account, Software? software);
         public void AddReview(string? information, Account? account, Software? software);
+        public void GiveAdmin(Account? account);
     }
 }

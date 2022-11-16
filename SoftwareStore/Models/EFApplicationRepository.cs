@@ -97,5 +97,15 @@ namespace SoftwareStore.Models
                 context.SaveChanges();
             }
         }
+
+        public void GiveAdmin(Account? account)
+        {
+            if (account != null)
+            {
+
+                account.Role = "Administrator";
+                context.SaveChanges();
+            }
+        }
     }
 }

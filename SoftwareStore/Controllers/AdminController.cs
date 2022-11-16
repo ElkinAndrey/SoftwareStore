@@ -41,7 +41,7 @@ namespace SoftwareStore.Controllers
             if (account == null)
                 return View(model);
 
-            account.Role = "Administrator";
+            applicationRepository.GiveAdmin(account);
 
             return View();
         }
