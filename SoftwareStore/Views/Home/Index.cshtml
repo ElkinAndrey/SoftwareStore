@@ -10,6 +10,7 @@
     {
         <div style='border: solid 3px @(i.IsBought ? "#57c49e" : "#000000"); margin: 10px'>
             <h2>@i.Software.Name</h2>
+            <img src="~/images/@{@i.Software.Name}.png" alt="" style="width: 100px; height: 100px"/>
             <div>@i.Software.ShortInformation</div>
             <div>@i.Software.Price</div>
             <a asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name>[Open]</a>

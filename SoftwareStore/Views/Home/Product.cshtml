@@ -5,6 +5,7 @@
 }
 
 <h1>Name : @Model.Software.Name @(Model.IsBought ? "(Bought)" : "")</h1>
+<img src="~/images/@{@Model.Software.Name}.png" alt="" style="width: 100px; height: 100px"/>
 <div>Information : @Model.Software.Information</div>
 <div>Price : @Model.Software.Price</div>
 
