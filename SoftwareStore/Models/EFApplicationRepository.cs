@@ -23,7 +23,14 @@ namespace SoftwareStore.Models
 
         public void AddAccount(Account? account)
         {
+            // Поиск элемента с именем
+            var blog = context.Accounts.Where(b => b.Name == account.Name).FirstOrDefault();
 
+            if (blog == null) // Чтобы не добавляло повторно
+            {
+                context.Accounts.Add(account);
+                context.SaveChanges();
+            }
         }
         public Account? CheckNameAccount(string? name)
         {

@@ -5,6 +5,8 @@ namespace SoftwareStore.Models
     // Интерфейс для работы с базой данных
     public interface IApplicationRepository
     {
+        public List<Account> Accounts { get; } // Список всех аккаунтов
+        public List<Software> Softwares { get; } // Список всех приложений
         public void AddAccount(Account? account); // Добавить аккаунт
         public Account? CheckNameAccount(string? name); // Найти аккаунт по имени
         public Account? CheckIdAccount(int? id); // Найти аккаунт по id
