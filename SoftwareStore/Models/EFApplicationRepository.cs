@@ -60,7 +60,11 @@ namespace SoftwareStore.Models
         }
         public Software? CheckNameSoftware(string? name)
         {
-            return null;
+            var blog = context.Softwares
+                .Include(u => u.Accounts)
+                .Include(u => u.Reviews)
+                .Where(b => b.Name == name).FirstOrDefault();
+            return blog;
         }
         public Software? CheckIdSoftware(int? id)
         {
