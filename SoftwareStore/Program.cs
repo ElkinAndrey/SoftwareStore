@@ -1,5 +1,6 @@
 // Даниил Сергеевич. Эту часть кода я писал сам (ни кому за это не платил). Я оставляю здесь такие подробные коментарии для себя, чтобы в будущем понимать, что и зачем нужно, потому что это сложные непонятные слова
 
+using Microsoft.EntityFrameworkCore;
 using SoftwareStore.Models;
 using System.Security.Claims;
 
@@ -19,6 +20,9 @@ builder.Services.AddAuthorization(options =>
     });
 }); // Добавление авторизации
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = SoftwareStore; Trusted_Connection = True")
+);
 
 builder.Services.AddTransient<IApplicationRepository, FakeApplicationRepository>(); // передаю IApplicationRepository в конструкторы контроллеров
 
