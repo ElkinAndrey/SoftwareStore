@@ -74,12 +74,16 @@ namespace SoftwareStore.Models
 
         public void GiveSoftware(Account? account, Software? software)
         {
-
+            if (account != null && software != null)
+            {
+                account.Softwares.Add(software);
+                context.SaveChanges();
+            }
         }
 
         public void AddReview(string? information, Account? account, Software? software)
         {
-
+            
         }
     }
 }
