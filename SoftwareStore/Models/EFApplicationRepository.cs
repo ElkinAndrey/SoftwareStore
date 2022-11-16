@@ -1,19 +1,25 @@
-﻿namespace SoftwareStore.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace SoftwareStore.Models
 {
     public class EFApplicationRepository : IApplicationRepository
     {
         private ApplicationDbContext context;
 
-        public List<Account> Accounts { get; } = FakeDataBase.Accounts;
-
-        public List<Software> Softwares { get; } = FakeDataBase.Softwares;
-
-        public List<Review> Reviews { get; } = FakeDataBase.Reviews;
-
         public EFApplicationRepository(ApplicationDbContext context)
         {
             this.context = context;
         }
+
+        public List<Account> Accounts => context.Accounts
+            .Include(u => u.Softwares)
+            .ThenInclude(u => u.Reviews)
+            .ToList();
+
+        public List<Software> Softwares => context.Softwares
+            .Include(u => u.Accounts)
+            .Include(u => u.Reviews)
+            .ToList();
 
         public void AddAccount(Account? account)
         {
