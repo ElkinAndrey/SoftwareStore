@@ -83,7 +83,19 @@ namespace SoftwareStore.Models
 
         public void AddReview(string? information, Account? account, Software? software)
         {
-            
+            if (account != null && software != null)
+            {
+
+                Review review = new Review
+                {
+                    Account = account,
+                    Information = information ?? "",
+                    Software = software
+                };
+
+                software.Reviews.Add(review);
+                context.SaveChanges();
+            }
         }
     }
 }
