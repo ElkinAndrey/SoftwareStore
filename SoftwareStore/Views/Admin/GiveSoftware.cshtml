@@ -9,11 +9,13 @@
 <form asp-controller="Admin" asp-action="GiveSoftware" method="post">
     <input hidden asp-for="ReturnUrl" />
     <div>
+        <span asp-validation-for="Account"></span><br />
         <label>Name account</label>
         <input asp-for="Account"/>
     </div>
 
     <div>
+        <span asp-validation-for="Software"></span><br />
         <label>Name software</label>
         <input asp-for="Software"/>
     </div>

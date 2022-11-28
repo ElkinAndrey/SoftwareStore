@@ -65,11 +65,17 @@ namespace SoftwareStore.Controllers
 
             Account? account = applicationRepository.CheckNameAccount(model.Account);
             if (account == null)
+            {
+                ModelState.AddModelError(nameof(model.Account), "Name not found");
                 return View(model);
+            }
 
             Software? software = applicationRepository.CheckNameSoftware(model.Software);
             if (software == null)
+            {
+                ModelState.AddModelError(nameof(model.Software), "Software not found");
                 return View(model);
+            }
 
             applicationRepository.GiveSoftware(account, software); // Выдать пользователю программу
 
