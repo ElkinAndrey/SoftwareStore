@@ -32,9 +32,15 @@ namespace SoftwareStore.Controllers
             // Проверка данных
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account == null)
+            {
+                ModelState.AddModelError(nameof(model.Name), "Name not found");
                 return View(model);
+            }
             if (account.Password != model.Password)
+            {
+                ModelState.AddModelError(nameof(model.Password), "Password entered incorrectly");
                 return View(model);
+            }
 
             // Выдача роли
             List<Claim> claims;
