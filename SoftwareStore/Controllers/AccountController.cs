@@ -81,7 +81,10 @@ namespace SoftwareStore.Controllers
             // Проверка данных
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account != null)
+                ModelState.AddModelError(nameof(model.Name), "An account with the same name already exists");
+            if (!ModelState.IsValid)
                 return View(model);
+
 
             // Выдача роли
             List<Claim> claims;

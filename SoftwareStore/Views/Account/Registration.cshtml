@@ -8,16 +8,19 @@
 <form asp-controller="Account" asp-action="Registration" method="post">
     <input hidden asp-for="ReturnUrl" />
     <div>
+        <span asp-validation-for="Name"></span><br />
         <label>Name</label>
         <input asp-for="Name"/>
     </div>
 
     <div>
+        <span asp-validation-for="Email"></span><br />
         <label>Email</label>
-        <input asp-for="Email"/>
+        <input asp-for="Email" type="text"/>
     </div>
     
     <div>
+        <span asp-validation-for="Password"></span><br />
         <label>Password</label>
         <input asp-for="Password"/>
     </div>
