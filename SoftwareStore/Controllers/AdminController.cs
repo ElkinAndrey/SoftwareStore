@@ -39,7 +39,10 @@ namespace SoftwareStore.Controllers
             // Проверка данных
             Account? account = applicationRepository.CheckNameAccount(model.Name);
             if (account == null)
+            {
+                ModelState.AddModelError(nameof(model.Name), "Name not found");
                 return View(model);
+            }
 
             applicationRepository.GiveAdmin(account);
 

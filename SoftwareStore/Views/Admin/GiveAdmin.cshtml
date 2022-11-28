@@ -9,6 +9,7 @@
 <form asp-controller="Admin" asp-action="GiveAdmin" method="post">
     <input hidden asp-for="ReturnUrl" />
     <div>
+        <span asp-validation-for="Name"></span><br />
         <label>Name</label>
         <input asp-for="Name"/>
     </div>
