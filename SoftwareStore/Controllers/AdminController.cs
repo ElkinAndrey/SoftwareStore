@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace SoftwareStore.Controllers
 {
@@ -97,11 +98,27 @@ namespace SoftwareStore.Controllers
             ViewBag.Name = User.Identity.Name;
 
             // Проверка данных
-            Account? account = applicationRepository.CheckNameAccount(model.Software.Name);
-            if (account != null)
+            Software? software = applicationRepository.CheckNameSoftware(model.Name);
+            if(software != null)
+            {
+                ModelState.AddModelError(nameof(model.Name), "The name is already in use");
                 return View(model);
+            }
 
-            applicationRepository.AddSoftware(model.Software);
+            if (model.Price < 0)
+            {
+                ModelState.AddModelError(nameof(model.Price), "The price cannot be negative");
+                return View(model);
+            }
+            if (!ModelState.IsValid) { return View(model); }
+            Software newSoftware = new Software 
+            { 
+                Name = model.Name, 
+                ShortInformation = model.ShortInformation, 
+                Information = model.Information, 
+                Price = model.Price ?? 0
+            };
+            applicationRepository.AddSoftware(newSoftware);
 
             return View();
         }

@@ -9,23 +9,27 @@
 <form asp-controller="Admin" asp-action="AddSoftware" method="post">
     <input hidden asp-for="ReturnUrl" />
     <div>
+        <span asp-validation-for="Name"></span><br />
         <label>Name</label>
-        <input asp-for="Software.Name"/>
+        <input asp-for="Name"/>
     </div>
 
     <div>
+        <span asp-validation-for="ShortInformation"></span><br />
         <label>Short Information</label>
-        <input asp-for="Software.ShortInformation"/>
+        <input asp-for="ShortInformation"/>
     </div>
 
     <div>
+        <span asp-validation-for="Information"></span><br />
         <label>Information</label>
-        <input asp-for="Software.Information"/>
+        <input asp-for="Information"/>
     </div>
 
     <div>
+        <span asp-validation-for="Price"></span><br />
         <label>Price</label>
-        <input asp-for="Software.Price"/>
+        <input asp-for="Price"/>
     </div>
 
     <p>
