@@ -19,3 +19,18 @@
 .validation-summary-valid {
     display: none;
 }
+
+@font-face {
+    font-family: Anek Devanagari;
+    src: url(../AnekDevanagari.ttf);
+}
+
+* {
+    font-family: 'Anek Devanagari';
+}
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
