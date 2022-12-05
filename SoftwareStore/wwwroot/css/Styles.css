@@ -20,7 +20,7 @@
     display: none;
 }
 
-@font-face {
+/*@font-face {
     font-family: Anek Devanagari;
     src: url(../AnekDevanagari.ttf);
 }
@@ -28,7 +28,7 @@
 * {
     font-family: 'Anek Devanagari';
 }
-
+*/
 
 body {
     margin: 0px;

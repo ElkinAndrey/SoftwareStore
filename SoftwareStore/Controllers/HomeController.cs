@@ -19,6 +19,7 @@ namespace SoftwareStore.Controllers
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
 
+
             Account? account = applicationRepository.CheckNameAccount(ViewBag.Name);
             List<Software> softwares = applicationRepository.Softwares;
             List<IndexViewModel> model = new List<IndexViewModel>();

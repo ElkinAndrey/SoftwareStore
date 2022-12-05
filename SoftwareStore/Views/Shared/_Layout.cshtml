@@ -5,25 +5,37 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/css/Styles.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/StyleLayout.css" type="text/css" />
 </head>
 
-<body>
-    sdfsdf
-    <h1 id="MainName">Software Store</h1>
-    
-    <a asp-controller="Admin" asp-action="Index">[Admin Panel]</a>
-    @if (ViewBag.IsAuthenticated)
-    {
-        <div>Name : @ViewBag.Name </div>
-        <div>IsAuthenticated : @ViewBag.IsAuthenticated</div>
-        <a asp-controller="Home" asp-action="LogOff">[Log out]</a>
-    }
-    else
-    {
-        <div>Not account</div>
-        <a asp-controller="Account" asp-action="Login">[Login]</a>
-        <a asp-controller="Account" asp-action="Registration">[Registration]</a>
-    }
+<body class="mainDesign">
+    <form id="header">
+        <div id="logo">
+            Software Store
+        </div>
+        @if (ViewBag.IsAuthenticated)
+        {
+            <button asp-controller="Home" asp-action="LogOff" class="button3Design">
+                Log out
+            </button>
+            <button asp-controller="Admin" asp-action="Index" class="button1Design">
+                Admin Panel
+            </button>
+            <div id="Name">@ViewBag.Name </div>
+
+        }
+        else
+        {
+            <button asp-controller="Account" asp-action="Registration" class="button3Design">
+                Registration
+            </button>
+            <button asp-controller="Account" asp-action="Login" class="button2Design">
+                Login
+            </button>
+        }
+        
+
+    </form>
     <div style="margin-top: 30px">
         @RenderBody()
     </div>
