@@ -2,11 +2,29 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SoftwareStore.Models;
+using System.Collections;
+using System.Security.Claims;
 
 namespace SoftwareStore.Controllers
 {
     public class HomeController : Controller
     {
+        private string GetRole(IEnumerable<Claim> claims)
+        {
+            if(claims.Count() == 0)
+            {
+                return null;
+            }
+            foreach(var claim in claims)
+            {
+                if(claim.Value == "Administrator")
+                {
+                    return "Administrator";
+                }
+            }
+            return "User";
+        }
+
         private IApplicationRepository applicationRepository;
 
         public HomeController(IApplicationRepository actionResult)
