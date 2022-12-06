@@ -18,9 +18,12 @@
             <button asp-controller="Home" asp-action="LogOff" class="button3Design">
                 Log out
             </button>
-            <button asp-controller="Admin" asp-action="Index" class="button1Design">
-                Admin Panel
-            </button>
+            @if(ViewBag.Role == "Administrator")
+            {
+                <button asp-controller="Admin" asp-action="Index" class="button1Design">
+                    Admin Panel
+                </button>
+            }
             <div id="Name">@ViewBag.Name </div>
 
         }

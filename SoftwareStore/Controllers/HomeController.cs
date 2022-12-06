@@ -36,7 +36,7 @@ namespace SoftwareStore.Controllers
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
-
+            ViewBag.Role = GetRole(User.Claims);
 
             Account? account = applicationRepository.CheckNameAccount(ViewBag.Name);
             List<Software> softwares = applicationRepository.Softwares;
@@ -79,6 +79,7 @@ namespace SoftwareStore.Controllers
 
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
+            ViewBag.Role = GetRole(User.Claims);
             model.IsBought = false;
 
             object? id = RouteData.Values["id"];
@@ -121,6 +122,7 @@ namespace SoftwareStore.Controllers
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
+            ViewBag.Role = GetRole(User.Claims);
 
             return View();
         }
@@ -129,6 +131,7 @@ namespace SoftwareStore.Controllers
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
             ViewBag.Name = User.Identity.Name;
+            ViewBag.Role = GetRole(User.Claims);
 
             return View();
         }
