@@ -1,46 +1,47 @@
-﻿<!DOCTYPE html>
-
-<html>
+﻿<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/css/Styles.css" type="text/css" />
     <link rel="stylesheet" href="~/css/StyleLayout.css" type="text/css" />
 </head>
+<body spellcheck="false">
+    <div id="Center">
 
-<body class="mainDesign">
-    <form id="header">
-        <div id="logo">
-            Software Store
-        </div>
-        @if (ViewBag.IsAuthenticated)
-        {
-            <button asp-controller="Home" asp-action="LogOff" class="button3Design">
-                Log out
-            </button>
-            @if(ViewBag.Role == "Administrator")
+        <form id="header">
+            <div id="logo">
+                Software Store
+            </div>
+            @if (ViewBag.IsAuthenticated)
             {
-                <button asp-controller="Admin" asp-action="Index" class="button1Design">
-                    Admin Panel
+                <button asp-controller="Home" asp-action="LogOff" class="button3Design">
+                    Log out
+                </button>
+                @if (ViewBag.Role == "Administrator")
+                {
+                    <button asp-controller="Admin" asp-action="Index" class="button1Design">
+                        Admin Panel
+                    </button>
+                }
+                <div id="Name">@ViewBag.Name </div>
+
+            }
+            else
+            {
+                <button asp-controller="Account" asp-action="Registration" class="button3Design">
+                    Registration
+                </button>
+                <button asp-controller="Account" asp-action="Login" class="button2Design">
+                    Login
                 </button>
             }
-            <div id="namePerson">@ViewBag.Name </div>
 
-        }
-        else
-        {
-            <button asp-controller="Account" asp-action="Registration" class="button3Design">
-                Registration
-            </button>
-            <button asp-controller="Account" asp-action="Login" class="button2Design">
-                Login
-            </button>
-        }
-        
 
-    </form>
-    <div style="margin-top: 30px">
-        @RenderBody()
+        </form>
+
+        <div id="Body">
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>
