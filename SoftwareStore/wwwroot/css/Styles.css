@@ -21,14 +21,15 @@
 }
 
 /*@font-face {
-    font-family: Anek Devanagari;
-    src: url(../AnekDevanagari.ttf);
-}
+    font-family: Mulish;
+    src: url('../Mulish.ttf');
+}*/
 
 * {
-    font-family: 'Anek Devanagari';
+    font-family: Arial;
 }
-*/
+
+
 
 body {
     margin: 0px;

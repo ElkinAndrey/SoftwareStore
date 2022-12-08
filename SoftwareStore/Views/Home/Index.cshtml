@@ -4,16 +4,21 @@
     Layout = "_Layout";
 }
 
-<h1>Products List</h1>
+
+<link rel="stylesheet" href="~/css/StyleMainPages.css" type="text/css" />
 <div>
+    <form>
     @foreach (var i in @Model)
     {
-        <div style='border: solid 3px @(i.IsBought ? "#57c49e" : "#000000"); margin: 10px'>
-            <h2>@i.Software.Name</h2>
-            <img src="~/images/@{@i.Software.Name}.png" alt="" style="width: 100px; height: 100px"/>
-            <div>@i.Software.ShortInformation</div>
-            <div>@i.Software.Price</div>
-            <a asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name>[Open]</a>
-        </div>
+        <button asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name class ='buttonProduct'>
+            <div id = "insideButton">
+                <h2 class="swName">@i.Software.Name</h2>
+                <img src="~/images/@{@i.Software.Name}.png" alt="" class="productImage"/>
+
+                <div class="shortInf">@i.Software.ShortInformation</div>
+                <div class="priceProduct">Price:@i.Software.Price</div>
+            </div>
+        </button>
     }
+    </form>
 </div>

@@ -19,7 +19,7 @@
     float: left;
 }
 
-#Name {
+#namePerson {
     color: white;
     font-size: 18px;
     margin: auto 10px auto 0px;
@@ -28,7 +28,7 @@
 }
 
 .button1Design {
-    background: #2f3136;
+    background: #0e2435;
     color: white;
     line-height: 0em;
     font-size: 18px;
@@ -47,7 +47,7 @@
 }
 
 .button2Design {
-    background: #2f3136;
+    background: #0e2435;
     color: white;
     line-height: 0em;
     font-size: 18px;
@@ -59,7 +59,6 @@
     width: 138px;
     height: 41px;
     float: right;
-   
 }
 
 .button2Design:active {
@@ -68,7 +67,7 @@
 }
 
 .button3Design {
-    background: #2f3136;
+    background: #0e2435;
     color: white;
     line-height: 0em;
     font-size: 18px;

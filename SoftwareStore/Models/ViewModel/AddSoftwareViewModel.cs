@@ -8,6 +8,7 @@ namespace SoftwareStore.Models.ViewModel
         [Required(ErrorMessage = "Enter name")]
         public string Name { get; set; } = ""; // Имя программы
         [Required(ErrorMessage = "Enter short information")]
+        [MaxLength(50)]
         public string ShortInformation { get; set; } = ""; // Краткая информация о программе
         [Required(ErrorMessage = "Enter information")]
         public string Information { get; set; } = ""; // Информация о программе
