@@ -105,3 +105,17 @@
         color: white;
         background: #36393f
     }
+/* полоса прокрутки (скроллбар) */
+#Center ::-webkit-scrollbar {
+    width: 10px; /* ширина для вертикального скролла */
+    height: 10px; /* высота для горизонтального скролла */
+    background-color: #eeeeee;
+    border: solid 1px #d9d9d9;
+    border-radius: 5px;
+}
+
+/* ползунок скроллбара */
+#Center ::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 5px;
+}
