@@ -2,10 +2,13 @@
     Layout = "_Layout";
 }
 
-<h1>Admin</h1>
+<link rel="stylesheet" href="~/css/StyleAdminPanel.css" type="text/css" />
+<div class="adminText">Admin panel</div>
 @ViewBag.Policy
-<a asp-controller="Admin" asp-action="GiveAdmin">[Give Admin]</a>
-<a asp-controller="Admin" asp-action="GiveSoftware">[Give Software]</a>
-<a asp-controller="Admin" asp-action="AddSoftware">[Add Software]</a>
 
-<a asp-controller="Home" asp-action="Index">[Home]</a>
+<form id="">
+    <button asp-controller="Admin" asp-action="GiveAdmin" class="button1">Give Admin</button>
+    <button asp-controller="Admin" asp-action="GiveSoftware" class="button2">Give Software</button>
+    <button asp-controller="Admin" asp-action="AddSoftware" class="button3">Add Software</button>
+    <button asp-controller="Home" asp-action="Index" class="button4">Home</button>
+</form>
