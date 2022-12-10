@@ -1,0 +1,23 @@
+#flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.inside-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    color: white;
+    background: #0e2435;
+    margin: 50px;
+    padding: 50px;
+}
+
+#left-container{
+    flex-grow: 1;
+    margin-right: 0px;
+}
+
+#right-container{
+    flex-grow: 5;
+}
