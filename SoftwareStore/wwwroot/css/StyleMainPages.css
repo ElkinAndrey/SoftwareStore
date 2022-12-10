@@ -36,6 +36,11 @@
     border-bottom: 2px solid #F5F5F5;
     background: white;
     transition: .3s ease-in;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .shortInf {
