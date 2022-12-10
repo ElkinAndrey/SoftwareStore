@@ -32,6 +32,8 @@
 }
 
 #logo {
+    -ms-user-select: none;
+    user-select: none;
     color: white;
     font-size: 36px;
     margin: auto 0px auto 96px;
