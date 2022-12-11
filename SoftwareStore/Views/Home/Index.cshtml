@@ -10,14 +10,14 @@
     <form>
         @foreach (var i in @Model)
         {
-            <button asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name class='buttonProduct'>
+            <button asp-controller="Home" asp-action="Product" asp-route-id=@i.Software.Name class='buttonProduct' style='border: solid 3px @(i.IsBought ? "#57c49e" : "#0e2435");'>
                 <div id="insideButton">
                     <h2 class="swName">@i.Software.Name</h2>
                     <img src="~/images/@{
-                    @i.Software.Name}.png" alt="" class="productImage" />
+                            @i.Software.Name}.png" alt="" class="productImage" />
 
                     <div class="shortInf">@i.Software.ShortInformation</div>
-                    <div class="priceProduct">Price:@i.Software.Price</div>
+                    <div class="priceProduct">@(i.IsBought ? "Bought" : $"Price:{i.Software.Price}")</div>
                 </div>
             </button>
         }
