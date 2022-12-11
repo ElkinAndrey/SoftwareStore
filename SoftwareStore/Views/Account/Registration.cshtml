@@ -1,5 +1,8 @@
 ﻿@model RegistrationViewModel
 
+@{
+    Layout = "_AccountLayout";
+}
 
 <link rel="stylesheet" href="~/css/Styles.css" />
 
@@ -10,19 +13,19 @@
     <div>
         <span asp-validation-for="Name"></span><br />
         <label>Name</label>
-        <input asp-for="Name"/>
+        <input asp-for="Name" />
     </div>
 
     <div>
         <span asp-validation-for="Email"></span><br />
         <label>Email</label>
-        <input asp-for="Email" type="text"/>
+        <input asp-for="Email" type="text" />
     </div>
-    
+
     <div>
         <span asp-validation-for="Password"></span><br />
         <label>Password</label>
-        <input asp-for="Password"/>
+        <input asp-for="Password" />
     </div>
 
     <p>

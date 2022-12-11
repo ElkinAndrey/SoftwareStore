@@ -1,6 +1,10 @@
 ﻿@model LoginViewModel
 
 
+@{
+    Layout = "_AccountLayout";
+}
+
 <link rel="stylesheet" href="~/css/Styles.css" />
 
 <h1>Login</h1>
@@ -10,13 +14,13 @@
     <div>
         <span asp-validation-for="Name"></span><br />
         <label>Name</label>
-        <input asp-for="Name"/>
+        <input asp-for="Name" />
     </div>
-    
+
     <div>
         <span asp-validation-for="Password"></span><br />
         <label>Password</label>
-        <input asp-for="Password"/>
+        <input asp-for="Password" />
     </div>
 
     <p>
