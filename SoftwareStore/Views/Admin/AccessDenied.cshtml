@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "_Layout";
 }
+<link rel="stylesheet" href="~/css/StyleAccessDenied.css" type="text/css" />
 
-<h1>Admin panel not available</h1>
-<a asp-controller="Home" asp-action="Index">[Home]</a>
+<div class="txt">Admin panel not available</div>
+<button asp-controller="Home" asp-action="Index" class="buttonHome">Home</button>
