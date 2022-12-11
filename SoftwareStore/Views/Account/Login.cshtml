@@ -5,27 +5,20 @@
     Layout = "_AccountLayout";
 }
 
-<link rel="stylesheet" href="~/css/Styles.css" />
+<link rel="stylesheet" href="~/css/StyleLogin.css" />
 
-<h1>Login</h1>
-
-<form asp-controller="Account" asp-action="Login" method="post">
+<form asp-controller="Account" style="width: 100%; height: 100%">
     <input hidden asp-for="ReturnUrl" />
+    <div id="LoginText">Login</div>
     <div>
-        <span asp-validation-for="Name"></span><br />
-        <label>Name</label>
-        <input asp-for="Name" />
+        <div class="subtitle">Name <span asp-validation-for="Name"></span><br /></div>
+        <input asp-for="Name" class="input1" />
+    </div>
+    <div>
+        <div class="subtitle">Password <span asp-validation-for="Password"></span></div>
+        <input asp-for="Password" class="input1" />
     </div>
 
-    <div>
-        <span asp-validation-for="Password"></span><br />
-        <label>Password</label>
-        <input asp-for="Password" />
-    </div>
-
-    <p>
-        <button type="submit">Login</button>
-    </p>
+    <button asp-action="Login" id="buttonLogin" class="button">Login</button>
+    <a asp-action="Registration" id="buttonRegistration" class="button">Registration</a>
 </form>
-
-<a asp-controller="Account" asp-action="Registration">[Registration]</a>
