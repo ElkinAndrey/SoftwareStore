@@ -1,0 +1,59 @@
+.input1 {
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid #4d5054;
+    border-radius: 5px;
+    background-color: #36393f;
+    color: white;
+    outline: none;
+    transition: all 0.2s linear;
+}
+
+    .input1:focus {
+        background-color: #4d5054;
+        transition: all 0.2s linear;
+    }
+
+.button {
+    font-size: 20px;
+    padding: 10px 30px;
+    border: solid 0px;
+    border-radius: 5px;
+    background: #2f3136;
+    transition: all 0.05s linear;
+    text-decoration: none;
+    color: white;
+}
+
+    .button:active {
+        background-color: #4d5054;
+        transition: all 0.05s linear;
+    }
+
+#LoginText {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.subtitle {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+#buttonRegistration {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+}
+
+
+#buttonLogin {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+}
