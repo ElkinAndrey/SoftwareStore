@@ -12,13 +12,15 @@
     padding: 28px;
     float: left; 
 }
-.buttonProduct:active {
-    background: #36394f;
-}
+
 
 .buttonProduct:hover {
     background: #36394f;
 }
+    .buttonProduct:active {
+        background: white;
+    }
+
 
 #insideButton{
     height: 100%;
