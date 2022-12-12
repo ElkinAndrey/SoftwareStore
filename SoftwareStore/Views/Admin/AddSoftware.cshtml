@@ -4,38 +4,29 @@
     Layout = "_Layout";
 }
 
-<h1>Add Software</h1>
+<link rel="stylesheet" href="~/css/StyleAddSoftware.css" />
 
-<form asp-controller="Admin" asp-action="AddSoftware" method="post">
+<form method="post" id="addSoftwareForm">
     <input hidden asp-for="ReturnUrl" />
+    <div id="title">Add software</div>
     <div>
-        <span asp-validation-for="Name"></span><br />
-        <label>Name</label>
-        <input asp-for="Name"/>
+        <div id="subtitle">Name <span asp-validation-for="Name"></span></div>
+        <input asp-for="Name" class="input" />
+    </div>
+    <div>
+        <div id="subtitle">Short Information <span asp-validation-for="ShortInformation"></span></div>
+        <input asp-for="ShortInformation" class="input" />
+    </div>
+    <div>
+        <div id="subtitle">Information <span asp-validation-for="Information"></span></div>
+        <input asp-for="Information" class="input" />
+    </div>
+    <div>
+        <div id="subtitle">Price <span asp-validation-for="Price"></span></div>
+        <input asp-for="Price" class="input" />
     </div>
 
-    <div>
-        <span asp-validation-for="ShortInformation"></span><br />
-        <label>Short Information</label>
-        <input asp-for="ShortInformation"/>
-    </div>
-
-    <div>
-        <span asp-validation-for="Information"></span><br />
-        <label>Information</label>
-        <input asp-for="Information"/>
-    </div>
-
-    <div>
-        <span asp-validation-for="Price"></span><br />
-        <label>Price</label>
-        <input asp-for="Price"/>
-    </div>
-
-    <p>
-        <button type="submit">Add software</button>
-    </p>
+    <button asp-controller="Admin" asp-action="AddSoftware" type="submit" class="button">Add</button>
+    <a asp-controller="Admin" asp-action="Index" class="button">Admin panel</a>
+    <a asp-controller="Home" asp-action="Index" class="button">Home</a>
 </form>
-
-<a asp-controller="Admin" asp-action="Index">[Admin]</a>
-<a asp-controller="Home" asp-action="Index">[Home]</a>

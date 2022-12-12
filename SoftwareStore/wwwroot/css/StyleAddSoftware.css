@@ -1,0 +1,50 @@
+﻿#addSoftwareForm {
+    padding: 10px;
+}
+
+#title {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+#subtitle {
+    margin-bottom: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.button {
+    font-size: 20px;
+    padding: 10px 30px;
+    border: solid 0px;
+    border-radius: 5px;
+    background: #2f3136;
+    transition: all 0.05s linear;
+    text-decoration: none;
+    color: white;
+    margin-right: 30px;
+}
+
+    .button:active {
+        background-color: #4d5054;
+        transition: all 0.05s linear;
+    }
+
+
+.input {
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid #4d5054;
+    border-radius: 5px;
+    background-color: #2f3136;
+    color: white;
+    outline: none;
+    transition: all 0.2s linear;
+    margin-bottom: 30px;
+}
+
+    .input:focus {
+        background-color: #4d5054;
+        transition: all 0.2s linear;
+    }
