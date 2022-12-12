@@ -4,20 +4,18 @@
     Layout = "_Layout";
 }
 
-<h1>Give Admin</h1>
 
-<form asp-controller="Admin" asp-action="GiveAdmin" method="post">
+<link rel="stylesheet" href="~/css/StyleGiveAdmin.css" />
+
+<form method="post" id="giveAdminForm">
     <input hidden asp-for="ReturnUrl" />
+    <div id="title">Give Admin</div>
     <div>
-        <span asp-validation-for="Name"></span><br />
-        <label>Name</label>
-        <input asp-for="Name"/>
+        <div id="subtitle">Name <span asp-validation-for="Name"></span></div>
+        <input asp-for="Name" class="input"/>
     </div>
 
-    <p>
-        <button type="submit">Give admin</button>
-    </p>
+    <button asp-controller="Admin" asp-action="GiveAdmin" type="submit" class="button">Give admin</button>
+    <a asp-controller="Admin" asp-action="Index" class="button">Admin panel</a>
+    <a asp-controller="Home" asp-action="Index" class="button">Home</a>
 </form>
-
-<a asp-controller="Admin" asp-action="Index">[Admin]</a>
-<a asp-controller="Home" asp-action="Index">[Home]</a>
