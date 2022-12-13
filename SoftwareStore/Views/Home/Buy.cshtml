@@ -1,4 +1,17 @@
 ﻿@{
+    Layout = "_AccountLayout";
+}
+
+<link rel="stylesheet" href="~/css/StyleBuy.css" />
+<div id="Header">Buy</div>
+<div id="MainText">To purchase, transfer money to this card: 4276 4900 1324 5907<br><br>When paying, 
+    write the name of your account and the name of the program you are buying in the comments
+</div>
+
+<button asp-controller="Home" asp-action="Index" id="ButtonHome">Home</button>
+
+
+@*@{
     Layout = "_Layout";
 }
 
@@ -10,3 +23,5 @@
     When paying, write the name of your account and the name of the program you are buying in the comments
 </div>
 <a asp-controller="Home" asp-action="Index">[Home]</a>
+
+*@
