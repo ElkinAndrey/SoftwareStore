@@ -1,4 +1,4 @@
-﻿@model ProductViewModel
+﻿@*@model ProductViewModel*@
 
 @{
     Layout = "_Layout";
@@ -6,7 +6,32 @@
 
 <link rel="stylesheet" href="~/css/StyleProduct.css" type="text/css" />
 
-<div id="flex-container">
+<div id="mainContainer">
+    <div id="leftContainer">
+        <img src="~/images/@{@Model.Software.Name}.png" alt="" style="width: 350px; height: 350px" />
+        <div id="price">Price : @Model.Software.Price</div>
+        <div id="buyButton">@if (Model.IsBought)
+            {
+                <form asp-controller="Home" asp-action="AddReview">
+                    <h2>Review</h2>
+                    <input name="information">
+                    <input type="hidden" name="softwareName" value="@Model.Software.Name" />
+                    <button>Add</button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Home" asp-action="Buy" id="buttonBuy">Buy</a>
+            }</div>
+    </div>
+
+    <div id="rightContainer">
+        <div id="name"><h1>Name : @Model.Software.Name @(Model.IsBought ? "(Bought)" : "")</h1></div>
+        <div id="information">Information : @Model.Software.Information</div>
+    </div>
+</div>
+
+@*<div id="flex-container">
     <div class="inside-container" id="left-container">
     
         <img src="~/images/@{@Model.Software.Name}.png" alt="" style="width: 350px; height: 350px" />
@@ -41,4 +66,4 @@
         }
         <a asp-controller="Home" asp-action="Index">[Home]</a>
     </div>
-</div>
+</div>*@

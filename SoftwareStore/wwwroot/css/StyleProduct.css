@@ -1,23 +1,62 @@
-#flex-container {
+#mainContainer{
+    margin-top: -20px;
+}
+
+#mainContainer div {
+    border-radius: 10px;
+    margin: 20px;
+    padding: 13px;
+    color: white;
+    font-size: 20px;
+}
+
+#mainContainer {
     display: flex;
     flex-direction: row;
 }
 
-.inside-container {
+#leftContainer {
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    color: white;
-    background: #0e2435;
-    margin: 50px;
-    padding: 50px;
-}
-
-#left-container{
     flex-grow: 1;
-    margin-right: 0px;
+    width: 200px;
 }
 
-#right-container{
+#rightContainer {
+    display: flex;
+    flex-direction: column;
     flex-grow: 5;
+}
+
+#buyButton {
+    background: #0e2435;
+}
+
+#price {
+    background: #2f3136;
+}
+
+#price, #buyButton {
+    align-self: center;
+    text-align: center;
+    width: 80%;
+    font-size: 20px;
+}
+
+#information {
+    height: 100%;
+}
+
+#name, #information {
+    background: #2f3136;
+}
+
+img {
+    align-self: center;
+    margin-top:20px;
+}
+
+#buttonBuy {
+    color: white;
+    text-decoration: none;
 }
